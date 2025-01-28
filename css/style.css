@@ -323,3 +323,7 @@ h6,
     width: 120px;
     height: 120px;
 }
+
+.bg-black {
+    background-color: #000000; /* black background */
+}
