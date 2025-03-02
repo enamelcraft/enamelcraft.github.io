@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://www.enamelcraft.in/sitemap
