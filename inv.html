@@ -18,6 +18,50 @@
     <meta property="og:url" content="https://www.enamelcraft.in">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Enamel Craft Dental Studio - Best Dentist, Root Canal, Dental Implant, Smile Designing, Dental Clinic in Pancard road",
+  "image": "https://lh3.googleusercontent.com/p/AF1QipMcYk2DWnXnHEd_a4EO2R5GUxUE-jDtoncPDki5=s680-w680-h510-rw",
+  "@id": "",
+  "url": "https://www.enamelcraft.in/",
+  "telephone": "7666297468",
+  "priceRange": "400",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop No. 3, Shreeban building, Sneh Park Society, Pancard Club Rd, Baner, Pune, Maharashtra",
+    "addressLocality": "Pune",
+    "postalCode": "411069",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 18.5615899,
+    "longitude": 73.782561
+  } ,
+  "sameAs": [
+    "https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/",
+    "https://www.instagram.com/enamel.craft/",
+    "https://www.enamelcraft.in/"
+  ] 
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Enamel Craft Dental Studio - Best Dentist, Root Canal, Dental Implant, Smile Designing, Dental Clinic in Pancard road",
+  "url": "https://www.enamelcraft.in/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.enamelcraft.in/{search_term_string}www.pimplesaudagar.dentaltree.in",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
    
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
@@ -51,13 +95,20 @@
     .form-group { margin-bottom: 10px; width: 300px; }
     label { display: block; font-weight: bold; margin-bottom: 4px; }
     input, select { width: 100%; padding: 6px 8px; border-radius: 4px; border: 1px solid #ccc; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: #fff; }
+	table { width: 100%; border-collapse: collapse; margin-top: 10px; background-color: #fff; }
     th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
     th { background-color: #e0e0e0; }
     button { margin-top: 10px; padding: 8px 12px; background-color: #008080; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
     button:hover { background-color: #006666; }
     .container { display: flex; flex-wrap: wrap; gap: 20px; }
     .section { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    #summaryTable { font-size: 14px; }
+    #summaryTable th { font-weight: bold; }
+    .table-success { background-color: #d1e7dd !important; }
+    .table-warning { background-color: #fff3cd !important; }
+    .text-end { text-align: right !important; }
+    input[type="number"]:invalid { border-color: #dc3545; }
+    input[type="number"]:valid { border-color: #28a745; }
 	</style>
   
 </head>
@@ -138,11 +189,13 @@
 		</div>
       <div class="form-group">
         <label>Amount Paid</label>
-        <input type="number" id="amountPaid" placeholder="0">
+        <input type="number" id="amountPaid" placeholder="0" min="0" step="0.01">
+        <small class="text-muted">Enter the amount paid by the patient</small>
       </div>
     </div>
     <div class="section" style="flex: 1;">
       <h3>Dental Treatments</h3>
+      <p class="text-muted mb-3">Add treatments and their costs. Discount percentage is optional (0-100%).</p>
       <table id="treatmentsTable">
         <thead>
           <tr>
@@ -180,18 +233,59 @@
 				  <option value="Zirconia Crown">Zirconia Crown</option>
 				</select>
 			  </td>
-			  <td><input type="number" class="cost"></td>
-			  <td><input type="number" class="discount" value="0"></td>
+			  <td><input type="number" class="cost" min="0" step="0.01" placeholder="0"></td>
+			  <td><input type="number" class="discount" value="0" min="0" max="100" step="0.01" placeholder="0"></td>
 			  <td><button  onclick="removeRow(this)">Remove</button></td>
 			</tr>
         </tbody>
       </table>
       <button onclick="addRow()">Add Treatment</button>
+      
+      <!-- Real-time Calculation Summary Table -->
+      <div class="mt-4">
+        <h3 class="mb-3">Payment Summary</h3>
+        <table id="summaryTable" class="table table-bordered table-striped">
+          <thead class="table-primary">
+            <tr>
+              <th>Description</th>
+              <th class="text-end">Amount (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Total Treatment Amount</strong></td>
+              <td class="text-end" id="totalTreatmentAmount">₹ 0.00</td>
+            </tr>
+            <tr>
+              <td><strong>Total Discount</strong></td>
+              <td class="text-end" id="totalDiscountAmount">₹ 0.00</td>
+            </tr>
+            <tr class="table-success">
+              <td><strong>Total Amount (After Discount)</strong></td>
+              <td class="text-end" id="totalAmountAfterDiscount"><strong>₹ 0.00</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Amount Paid</strong></td>
+              <td class="text-end" id="amountPaidDisplay">₹ 0.00</td>
+            </tr>
+            <tr class="table-warning">
+              <td><strong>Amount Remaining</strong></td>
+              <td class="text-end" id="amountRemaining"><strong>₹ 0.00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info mt-3" role="alert">
+          <i class="bi bi-info-circle me-2"></i>
+          <strong>Note:</strong> Please review all details above before generating the invoice. Ensure all required fields are filled correctly.
+        </div>
+      </div>
     </div>
   </div>
 
   <div style="margin-top: 20px;" class="container text-center mb-5">
-    <button class="btn btn-primary py-3 px-5 mt-3 wow" onclick="generatePDF()">Generate PDF</button>
+    <button class="btn btn-primary btn-lg py-3 px-5 mt-3 wow" onclick="generatePDF()">
+      <i class="bi bi-file-earmark-pdf me-2"></i>Generate Invoice PDF
+    </button>
   </div>
 
 
@@ -231,8 +325,8 @@
 			${options}
 		  </select>
 		</td>
-		<td><input type="number" class="cost"></td>
-		<td><input type="number" class="discount" value="0"></td>
+		<td><input type="number" class="cost" min="0" step="0.01" placeholder="0"></td>
+		<td><input type="number" class="discount" value="0" min="0" max="100" step="0.01" placeholder="0"></td>
 		<td><button onclick="removeRow(this)">Remove</button></td>
 	  `;
 
@@ -249,10 +343,12 @@
 
     function removeRow(btn) {
       btn.parentElement.parentElement.remove();
+      updateSummaryTable(); // Update summary when row is removed
     }
 
 	function calculateTotal() {
 	  let total = 0;
+	  let totalTreatmentAmount = 0;
 	  let totalDiscount = 0;
 	  let hasDiscount = false;
 
@@ -260,21 +356,120 @@
 	  const treatments = [];
 
 	  rows.forEach(row => {
-		const t = row.querySelector('.treatment').value;
-		const c = parseFloat(row.querySelector('.cost').value || 0);
-		const d = parseFloat(row.querySelector('.discount').value || 0);
-		const discountAmount = (c * d) / 100;
-		const finalCost = c - discountAmount;
+		const treatmentSelect = row.querySelector('.treatment');
+		const costInput = row.querySelector('.cost');
+		const discountInput = row.querySelector('.discount');
+		
+		if (!treatmentSelect || !costInput || !discountInput) return;
+		
+		const t = treatmentSelect.value || '';
+		const c = parseFloat(costInput.value) || 0;
+		const d = parseFloat(discountInput.value) || 0;
+		
+		if (c > 0) {
+		  const discountAmount = (c * d) / 100;
+		  const finalCost = c - discountAmount;
 
-		if (d > 0) hasDiscount = true;
+		  if (d > 0) hasDiscount = true;
 
-		total += finalCost;
-		totalDiscount += discountAmount;
-		treatments.push({ name: t, cost: c, discount: d, total: finalCost });
+		  totalTreatmentAmount += c;
+		  total += finalCost;
+		  totalDiscount += discountAmount;
+		  treatments.push({ name: t, cost: c, discount: d, total: finalCost });
+		}
 	  });
 
-	  return { total, totalDiscount, treatments, hasDiscount };
+	  return { total, totalTreatmentAmount, totalDiscount, treatments, hasDiscount };
 	}
+
+	function updateSummaryTable() {
+	  const { total, totalTreatmentAmount, totalDiscount, hasDiscount } = calculateTotal();
+	  const amountPaid = parseFloat(document.getElementById('amountPaid').value || 0);
+	  const amountRemaining = total - amountPaid;
+
+	  // Update summary table
+	  document.getElementById('totalTreatmentAmount').textContent = `₹ ${totalTreatmentAmount.toFixed(2)}`;
+	  document.getElementById('totalDiscountAmount').textContent = `₹ ${totalDiscount.toFixed(2)}`;
+	  document.getElementById('totalAmountAfterDiscount').innerHTML = `<strong>₹ ${total.toFixed(2)}</strong>`;
+	  document.getElementById('amountPaidDisplay').textContent = `₹ ${amountPaid.toFixed(2)}`;
+	  
+	  const remainingCell = document.getElementById('amountRemaining');
+	  if (amountRemaining > 0) {
+		remainingCell.innerHTML = `<strong class="text-danger">₹ ${amountRemaining.toFixed(2)}</strong>`;
+	  } else if (amountRemaining < 0) {
+		remainingCell.innerHTML = `<strong class="text-success">₹ ${Math.abs(amountRemaining).toFixed(2)} (Excess)</strong>`;
+	  } else {
+		remainingCell.innerHTML = `<strong class="text-success">₹ 0.00 (Paid in Full)</strong>`;
+	  }
+	}
+
+	// Use event delegation for real-time updates (works for dynamically added elements)
+	// This must be set up before DOMContentLoaded to catch all events
+	document.addEventListener('input', function(e) {
+	  if (e.target && (e.target.classList.contains('cost') || e.target.classList.contains('discount') || e.target.id === 'amountPaid')) {
+		updateSummaryTable();
+	  }
+	});
+
+	document.addEventListener('change', function(e) {
+	  if (e.target && (e.target.classList.contains('cost') || e.target.classList.contains('discount') || e.target.id === 'amountPaid')) {
+		updateSummaryTable();
+	  }
+	});
+
+	// Add event listeners for real-time updates
+	document.addEventListener('DOMContentLoaded', function() {
+	  // Initialize Select2 for existing treatment dropdown
+	  if (typeof $ !== 'undefined') {
+		$('.treatment').select2({
+		  placeholder: "Search treatment...",
+		  allowClear: true,
+		  width: 'resolve'
+		});
+	  }
+
+	  // Update when treatments are added/removed
+	  const originalAddRow = window.addRow;
+	  window.addRow = function() {
+		originalAddRow();
+		// Re-initialize Select2 after adding row
+		setTimeout(() => {
+		  if (typeof $ !== 'undefined') {
+			$('.treatment').select2({
+			  placeholder: "Search treatment...",
+			  allowClear: true,
+			  width: 'resolve'
+			});
+		  }
+		  updateSummaryTable();
+		}, 100);
+	  };
+
+	  // Update when treatment selection changes
+	  if (typeof $ !== 'undefined') {
+		$(document).on('change', '.treatment', function() {
+		  updateSummaryTable();
+		});
+	  }
+
+	  // Also attach direct listeners to existing inputs as backup
+	  function attachDirectListeners() {
+		document.querySelectorAll('.cost, .discount').forEach(input => {
+		  input.addEventListener('input', updateSummaryTable);
+		  input.addEventListener('change', updateSummaryTable);
+		});
+		const amountPaidInput = document.getElementById('amountPaid');
+		if (amountPaidInput) {
+		  amountPaidInput.addEventListener('input', updateSummaryTable);
+		  amountPaidInput.addEventListener('change', updateSummaryTable);
+		}
+	  }
+	  
+	  attachDirectListeners();
+
+	  // Initial calculation
+	  setTimeout(updateSummaryTable, 300);
+	});
 
 
 
@@ -293,14 +488,66 @@
 	const value = document.getElementById(field.id)?.value.trim();
 	if (!value) {
 	  alert(`Please fill in the ${field.label} field.`);
+	  document.getElementById(field.id).focus();
 	  return;
 	}
 	}
 
+	// Validate contact number
+	const contactValue = document.getElementById('contact').value.trim();
+	if (contactValue.length !== 10 || !/^\d+$/.test(contactValue)) {
+	  alert('Please enter a valid 10-digit contact number.');
+	  document.getElementById('contact').focus();
+	  return;
+	}
+
+	// Validate age
+	const ageValue = parseInt(document.getElementById('age').value);
+	if (isNaN(ageValue) || ageValue < 0 || ageValue > 150) {
+	  alert('Please enter a valid age (0-150).');
+	  document.getElementById('age').focus();
+	  return;
+	}
+
 	const treatmentDropdowns = document.querySelectorAll('.treatment');
-	if ([...treatmentDropdowns].some(sel => !sel.value)) {
-	alert('Please select a treatment option for all rows.');
-	return;
+	const treatmentRows = document.querySelectorAll('#treatmentsTable tbody tr');
+	
+	if (treatmentRows.length === 0) {
+	  alert('Please add at least one treatment.');
+	  return;
+	}
+
+	let hasValidTreatment = false;
+	treatmentRows.forEach(row => {
+	  const treatment = row.querySelector('.treatment').value;
+	  const cost = parseFloat(row.querySelector('.cost').value || 0);
+	  if (treatment && cost > 0) {
+		hasValidTreatment = true;
+	  }
+	});
+
+	if (!hasValidTreatment) {
+	  alert('Please add at least one treatment with a valid cost.');
+	  return;
+	}
+
+	// Validate discount percentages
+	const discountInputs = document.querySelectorAll('.discount');
+	for (const discountInput of discountInputs) {
+	  const discount = parseFloat(discountInput.value || 0);
+	  if (discount < 0 || discount > 100) {
+		alert('Discount percentage must be between 0 and 100.');
+		discountInput.focus();
+		return;
+	  }
+	}
+
+	// Validate amount paid
+	const amountPaidValue = parseFloat(document.getElementById('amountPaid').value || 0);
+	if (amountPaidValue < 0) {
+	  alert('Amount paid cannot be negative.');
+	  document.getElementById('amountPaid').focus();
+	  return;
 	}
 
 	// ✅ Proceed only if everything is filled correctly
