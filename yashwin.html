@@ -236,10 +236,10 @@
     <div class="container-fluid bg-primary py-5 hero-header mb-5">
         <div class="row py-3">
             <div class="col-12 text-center">
-                <h1 class="display-3 text-white animated zoomIn">Special Offer for Yashwin Residents!</h1>
-                <a href="index.html" class="h4 text-white">Home</a>
-                <i class="far fa-circle text-white px-2"></i>
-                <a href="yashwin.html" class="h4 text-white">Yashwin Offer</a>
+                <h1 class="display-3 text-white animated zoomIn hero-title-mobile">Special Offer for Yashwin Residents!</h1>
+                <a href="index.html" class="h4 text-white breadcrumb-link">Home</a>
+                <i class="far fa-circle text-white px-2 breadcrumb-separator"></i>
+                <a href="yashwin.html" class="h4 text-white breadcrumb-link">Yashwin Offer</a>
             </div>
         </div>
     </div>
@@ -247,7 +247,7 @@
 
 
 <!-- Special Offer Start -->
-<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+<div class="container-fluid py-5 wow fadeInUp special-offer-section" data-wow-delay="0.1s" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
     <div class="container text-center">
         <div class="section-title mb-4">
             <h5 class="position-relative d-inline-block text-white text-uppercase mb-3" style="font-weight: 700; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🏘️ Exclusive Offer for Yashwin Society Residents 🏘️</h5>
@@ -267,10 +267,6 @@
                     Get 10% OFF on Root Canal, Implants, Crowns, Fillings & More!
                 </h2>
             </div>
-        </div>
-        <div class="position-relative mx-auto mb-4" style="max-width: 500px;">
-            <img class="w-100 rounded wow zoomIn shadow-lg" data-wow-delay="0.3s" 
-                 src="img/ecOffer.jpg" alt="Dental Scaling and Polishing Offer for Yashwin Residents" style="border: 5px solid #ffd700; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
         </div>
         <p class="lead text-white mb-4" style="font-size: 1.3rem; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
             As a Yashwin Society resident, enjoy exclusive discounts on all our premium dental services!
@@ -534,6 +530,114 @@
         .bonus-offer {
             font-size: 1.3rem !important;
         }
+        .gradient-text {
+            font-size: 1.8rem !important;
+        }
+        .yashwin-badge {
+            font-size: 1.5rem !important;
+            margin-top: 10px !important;
+        }
+        .offer-badge {
+            padding: 20px 15px !important;
+            margin-bottom: 20px !important;
+        }
+        .badge-content h3 {
+            font-size: 1rem !important;
+        }
+        .badge-content h2 {
+            font-size: 1.1rem !important;
+        }
+        .lead {
+            font-size: 1rem !important;
+            padding: 0 15px;
+        }
+        .flashy-button {
+            font-size: 1rem !important;
+            padding: 12px 20px !important;
+            width: 90%;
+            max-width: 350px;
+        }
+        .container-fluid.py-5 {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+        .hero-title-mobile {
+            font-size: 1.8rem !important;
+        }
+        .breadcrumb-link {
+            font-size: 0.9rem !important;
+        }
+        .breadcrumb-separator {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+        .hero-header {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .flashy-heading {
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+        }
+        .gradient-text {
+            font-size: 1.4rem !important;
+        }
+        .yashwin-badge {
+            font-size: 1.2rem !important;
+            margin-top: 8px !important;
+        }
+        .offer-badge {
+            padding: 15px 10px !important;
+        }
+        .badge-content h3 {
+            font-size: 0.9rem !important;
+        }
+        .badge-content h2 {
+            font-size: 1rem !important;
+        }
+        .lead {
+            font-size: 0.95rem !important;
+            padding: 0 10px;
+        }
+        .flashy-button {
+            font-size: 0.9rem !important;
+            padding: 10px 16px !important;
+            width: 95%;
+        }
+        h5.position-relative {
+            font-size: 0.85rem !important;
+            letter-spacing: 1px !important;
+        }
+        .display-3 {
+            font-size: 1.8rem !important;
+        }
+        .display-4 {
+            font-size: 1.5rem !important;
+        }
+        .hero-title-mobile {
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+        }
+        .breadcrumb-link {
+            font-size: 0.8rem !important;
+        }
+        .breadcrumb-separator {
+            padding-left: 0.3rem !important;
+            padding-right: 0.3rem !important;
+            font-size: 0.6rem !important;
+        }
+        .hero-header {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+            margin-bottom: 2rem !important;
+        }
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 
     /* Additional Offers Styles */
@@ -751,6 +855,121 @@
         }
         .offer-card-inner {
             padding: 30px 20px;
+        }
+        .offer-icon i {
+            font-size: 3rem !important;
+        }
+        .offer-description {
+            font-size: 1rem !important;
+        }
+        .flashy-button-2 {
+            font-size: 0.95rem !important;
+            padding: 10px 20px !important;
+        }
+        .container-fluid.py-5 {
+            padding-top: 2.5rem !important;
+            padding-bottom: 2.5rem !important;
+        }
+        h2.display-4 {
+            font-size: 2rem !important;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .offer-title-text {
+            font-size: 1.4rem;
+        }
+        .discount-text, .free-text, .price-text {
+            font-size: 2rem;
+        }
+        .offer-card-inner {
+            padding: 25px 15px;
+        }
+        .offer-icon i {
+            font-size: 2.5rem !important;
+        }
+        .offer-description {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+        }
+        .flashy-button-2 {
+            font-size: 0.85rem !important;
+            padding: 8px 16px !important;
+            width: 100%;
+        }
+        h2.display-4 {
+            font-size: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        .row.g-4 {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+        .row.g-4 > * {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    
+    /* Touch-friendly buttons for mobile */
+    @media screen and (max-width: 768px) {
+        .btn {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        .flashy-button, .flashy-button-2 {
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    /* Improve text readability on mobile */
+    @media screen and (max-width: 576px) {
+        body {
+            font-size: 14px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .text-white {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    }
+    
+    /* Ensure proper spacing on mobile */
+    @media screen and (max-width: 768px) {
+        .section-title {
+            margin-bottom: 1.5rem !important;
+        }
+        .mb-4 {
+            margin-bottom: 1rem !important;
+        }
+        .mb-5 {
+            margin-bottom: 1.5rem !important;
+        }
+        .mt-3 {
+            margin-top: 1rem !important;
+        }
+        .special-offer-section {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        .special-offer-section {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
         }
     }
 </style>
