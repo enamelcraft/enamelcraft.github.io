@@ -4,58 +4,51 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://www.enamelcraft.in/</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
+  <lastmod>2025-02-26</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.enamelcraft.in/index.html</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://www.enamelcraft.in/about.html</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.enamelcraft.in/service.html</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.enamelcraft.in/contact.html</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.enamelcraft.in/service</loc>
-  <lastmod>2025-02-25T12:14:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.enamelcraft.in/offer.html</loc>
-  <lastmod>2025-03-21T22:14:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.enamelcraft.in/faq.html</loc>
-  <lastmod>2025-01-27T12:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.enamelcraft.in/voice-search.html</loc>
-  <lastmod>2025-01-27T12:00:00+00:00</lastmod>
-  <priority>0.75</priority>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.enamelcraft.in/blogs.html</loc>
-  <lastmod>2025-01-28T12:00:00+00:00</lastmod>
+  <lastmod>2025-02-26</lastmod>
   <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://www.enamelcraft.in/offer.html</loc>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://www.enamelcraft.in/yashwin.html</loc>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://www.enamelcraft.in/voice-search.html</loc>
+  <lastmod>2025-02-26</lastmod>
+  <priority>0.75</priority>
 </url>
 
 </urlset>
