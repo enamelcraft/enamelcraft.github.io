@@ -1,4 +1,4 @@
-image.png// Header drawing function for prescription PDF
+// Header drawing function for prescription PDF
 function drawPrescriptionHeader(doc) {
     const marginX = 15;
     const headerTopY = 10;
@@ -36,9 +36,9 @@ function drawPrescriptionHeader(doc) {
     doc.setFontSize(8);
     doc.setFont(undefined, 'normal');
     const addressX = pageWidth - marginX - 50;
-    doc.text('Shop No.3, Shreeban Building,', addressX, iconY + 3);
-    doc.text('Sneh Park Society', addressX, iconY + 7);
-    doc.text('Pan Card Club Road, Baner 411045', addressX, iconY + 11);
+    doc.text('Shop No. 3, Shreeban building,', addressX, iconY + 3);
+    doc.text('Sneh Park Society, Pancard Club Rd,', addressX, iconY + 7);
+    doc.text('Baner Gaon, Baner, Pune, Maharashtra 411045', addressX, iconY + 11);
     
     // Bottom section - White background with green accent
     const bottomY = headerTopY + topSectionHeight;

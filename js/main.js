@@ -67,55 +67,54 @@
     });
 
 
-    // Date and time picker
-    $('.date').datetimepicker({
-        format: 'L'
-    });
-    $('.time').datetimepicker({
-        format: 'LT'
-    });
+    // Date and time picker (only when TempusDominus is loaded and inputs exist)
+    if ($('.date').length && $.fn.datetimepicker) {
+        $('.date').datetimepicker({ format: 'L' });
+    }
+    if ($('.time').length && $.fn.datetimepicker) {
+        $('.time').datetimepicker({ format: 'LT' });
+    }
 
+    // Image comparison (only when TwentyTwenty is loaded and container exists)
+    if ($(".twentytwenty-container").length && $.fn.twentytwenty) {
+        $(".twentytwenty-container").twentytwenty({});
+    }
 
-    // Image comparison
-    $(".twentytwenty-container").twentytwenty({});
-
-
-    // Price carousel
-    $(".price-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        margin: 45,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
+    // Price carousel (only when Owl is loaded and element exists)
+    if ($(".price-carousel").length && $.fn.owlCarousel) {
+        $(".price-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1500,
+            margin: 45,
+            dots: false,
+            loop: true,
+            nav : true,
+            navText : [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+            responsive: {
+                0:{ items:1 },
+                768:{ items:2 }
             }
-        }
-    });
+        });
+    }
 
-
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-    });
+    // Testimonials carousel (only when Owl is loaded and element exists)
+    if ($(".testimonial-carousel").length && $.fn.owlCarousel) {
+        $(".testimonial-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            items: 1,
+            dots: false,
+            loop: true,
+            nav : true,
+            navText : [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+        });
+    }
     
 })(jQuery);
 
