@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard.html
 Disallow: /prescription.html
 Disallow: /inv.html
 Sitemap: https://www.enamelcraft.in/sitemap.xml

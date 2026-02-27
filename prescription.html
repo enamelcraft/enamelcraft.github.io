@@ -15,8 +15,8 @@
     <meta property="og:title" content="Best Dentist in Baner Pune | Enamel Craft Dental Studio">
     <meta property="og:description"
           content="Expert dental care in Baner, Pune. Visit Enamel Craft Dental Studio for painless root canals, smile makeovers, and advanced cosmetic dentistry.">
-    <meta property="og:image" content="https://www.enamelcraft.in/img/clinic.jpg">
-    <meta property="og:url" content="https://www.enamelcraft.in">
+    <meta property="og:image" content="https://www.enamelcraft.in/img/enamel-craft-dental-clinic-baner.jpg">
+    <meta property="og:url" content="https://www.enamelcraft.in/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -75,9 +75,55 @@
 </head>
 
 <body>
+<!-- Password gate (direct URL access) -->
+<div id="ec-gate-overlay" class="ec-gate-overlay" aria-live="polite">
+    <div class="ec-gate-box">
+        <p class="ec-gate-title">Staff access</p>
+        <form id="ec-gate-form" class="ec-gate-form">
+            <label for="ec-gate-password" class="visually-hidden">Password</label>
+            <input type="password" id="ec-gate-password" class="ec-gate-input" placeholder="Enter password" autocomplete="current-password" autofocus>
+            <button type="submit" class="ec-gate-btn">Enter</button>
+        </form>
+        <p id="ec-gate-error" class="ec-gate-error" role="alert" hidden>Incorrect password.</p>
+    </div>
+</div>
+<style>
+.ec-gate-overlay { position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; }
+.ec-gate-box { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); min-width: 280px; }
+.ec-gate-title { margin: 0 0 1rem; font-size: 1.1rem; color: #333; text-align: center; }
+.ec-gate-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.ec-gate-input { padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+.ec-gate-btn { padding: 0.5rem 1rem; background: #008080; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+.ec-gate-btn:hover { background: #006666; }
+.ec-gate-error { margin: 0.5rem 0 0; color: #dc3545; font-size: 0.9rem; text-align: center; }
+.ec-gate-overlay.ec-gate-unlocked { display: none !important; }
+</style>
+<script>
+(function() {
+    var STORAGE_KEY = 'ecToolsGate';
+    var EXPECTED_HASH = 'ba3535209cb0d23d06f7fabf438cef610f492b905d27767be7fd06e36f6325d5';
+    var overlay = document.getElementById('ec-gate-overlay');
+    var form = document.getElementById('ec-gate-form');
+    var input = document.getElementById('ec-gate-password');
+    var errEl = document.getElementById('ec-gate-error');
+    function hideGate() { overlay.classList.add('ec-gate-unlocked'); }
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') { hideGate(); return; }
+    function hex(buf) { return Array.from(new Uint8Array(buf)).map(function(x){ return ('0'+x.toString(16)).slice(-2); }).join(''); }
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errEl.hidden = true;
+        var pw = (input.value || '').trim();
+        if (!pw) return;
+        crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
+            if (hex(buf) === EXPECTED_HASH) { sessionStorage.setItem(STORAGE_KEY, '1'); hideGate(); }
+            else { errEl.hidden = false; input.value = ''; input.focus(); }
+        });
+    });
+})();
+</script>
 <!-- Spinner Start -->
 <div id="spinner"
-     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+     class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary m-1" role="status">
         <span class="sr-only">Loading...</span>
     </div>
@@ -593,31 +639,9 @@
     }
 </style>
     
-<div class="container-fluid text-light py-4" style="background: #051225;" itemscope
-     itemtype="https://schema.org/Organization">
-    <meta itemprop="name" content="Enamel Craft Dental Studio">
-    <meta itemprop="url" content="https://www.enamelcraft.in">
-    <meta itemprop="address"
-          content="Shop No. 3, Shreeban Building, Sneh Park Society, Pan Card Club Rd, Baner, Pune, Maharashtra 411045">
-    <meta itemprop="telephone" content="+91-7666297468">
-    <meta itemprop="email" content="enamelcraft.dental@gmail.com">
-
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="mb-md-0">© <a class="text-white border-bottom" href="https://www.enamelcraft.in"
-                                        itemprop="url">Enamel Craft Dental Studio</a>. All Rights Reserved.</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="mb-0"><small>Template from <a class="text-white border-bottom" href="https://htmlcodex.com"
-                                                        rel="noopener" target="_blank">HTML Codex</a></small></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+<footer class="container-fluid text-light py-3 text-center" style="background: #051225;">
+    <p class="mb-0">© Enamel Craft Dental Studio</p>
+</footer>
 
 
     <!-- JavaScript Libraries -->

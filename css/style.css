@@ -100,6 +100,10 @@ h6,
     transform: skew(40deg);
 }
 
+.top-shape.top-shape-dark::before {
+    background: var(--dark);
+}
+
 .navbar-light .navbar-nav .nav-link {
     font-family: 'Jost', sans-serif;
     padding: 35px 15px;
@@ -326,4 +330,51 @@ h6,
 
 .bg-black {
     background-color: #000000; /* black background */
+}
+
+/* ========== Mobile-first: tap targets 44px min, base font 16px ========== */
+@media (max-width: 991px) {
+    html {
+        font-size: 16px;
+    }
+    body {
+        font-size: 16px;
+    }
+    /* Primary and secondary buttons: min 44px touch target */
+    .btn,
+    .btn-primary,
+    .btn-secondary,
+    .btn-light,
+    .navbar .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-sm {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem 1rem;
+    }
+    /* Nav links: easy thumb tap */
+    .navbar-nav .nav-link {
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+        display: inline-flex;
+        align-items: center;
+    }
+    /* Square icon buttons (back-to-top, carousel arrows) */
+    .btn-square,
+    .btn-lg-square {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    .back-to-top {
+        min-width: 44px;
+        min-height: 44px;
+        right: 1rem;
+        bottom: 1rem;
+    }
 }
