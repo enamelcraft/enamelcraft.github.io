@@ -332,6 +332,67 @@ h6,
     background-color: #000000; /* black background */
 }
 
+/* ========== Sticky mobile CTA bar ========== */
+.mobile-cta-bar {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    /* Sticky Call / WhatsApp bar */
+    .mobile-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, .18);
+    }
+    .mobile-cta-bar a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 10px;
+        font-family: 'Jost', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 0;
+    }
+    .mobile-cta-bar .cta-call {
+        background: var(--primary);
+    }
+    .mobile-cta-bar .cta-whatsapp {
+        background: #25D366;
+    }
+    /* Body padding so the sticky bar doesn't cover page content */
+    body {
+        padding-bottom: 58px;
+    }
+
+    /* Reduce navbar horizontal padding on mobile */
+    .navbar {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Reduce about-section image min-height on mobile */
+    .about-img-col {
+        min-height: 280px !important;
+    }
+}
+
+/* Fix carousel h2 (display-1) font size on small screens */
+@media (max-width: 576px) {
+    .carousel-caption h2 {
+        font-size: 30px;
+        font-weight: 600 !important;
+    }
+}
+
 /* ========== Mobile-first: tap targets 44px min, base font 16px ========== */
 @media (max-width: 991px) {
     html {
@@ -372,9 +433,6 @@ h6,
         min-height: 44px;
     }
     .back-to-top {
-        min-width: 44px;
-        min-height: 44px;
-        right: 1rem;
-        bottom: 1rem;
+        display: none !important;
     }
 }
