@@ -165,7 +165,15 @@ h6,
     .banner {
         position: relative;
         margin-top: -90px;
-        z-index: 1;
+        z-index: 10;
+    }
+}
+/* Banner visible on mobile too - overlap hero */
+@media (max-width: 991.98px) {
+    .banner {
+        position: relative;
+        margin-top: -40px;
+        z-index: 10;
     }
 }
 
