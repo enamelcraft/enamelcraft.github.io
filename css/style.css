@@ -168,11 +168,11 @@ h6,
         z-index: 10;
     }
 }
-/* Banner visible on mobile too - overlap hero */
+/* Banner below carousel on mobile - no overlap to prevent Hours tile overlapping */
 @media (max-width: 991.98px) {
     .banner {
         position: relative;
-        margin-top: -40px;
+        margin-top: 1rem;
         z-index: 10;
     }
 }
