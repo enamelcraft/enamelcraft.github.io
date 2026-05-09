@@ -32,6 +32,7 @@
     const showClass = "show";
     
     $(window).on("load resize", function() {
+        $dropdown.off("mouseenter mouseleave");
         if (this.matchMedia("(min-width: 992px)").matches) {
             $dropdown.hover(
             function() {
@@ -47,23 +48,7 @@
                 $this.find($dropdownMenu).removeClass(showClass);
             }
             );
-        } else {
-            $dropdown.off("mouseenter mouseleave");
         }
-    });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
     });
 
 
