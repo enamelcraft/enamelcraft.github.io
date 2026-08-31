@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+
 /* Enamel Craft — minimal clinical UI */
 :root {
   --ec-bg: #f7f6f3;
@@ -15,6 +17,7 @@
   --ec-shadow-hover: 0 12px 40px rgba(26, 31, 28, 0.1);
   --ec-font-serif: "Cormorant Garamond", Georgia, serif;
   --ec-font-sans: "DM Sans", system-ui, sans-serif;
+  --ec-font-num: "Inter", "DM Sans", system-ui, sans-serif;
   --ec-header-h: 4.25rem;
   --ec-max: 72rem;
 }
@@ -60,6 +63,26 @@ html {
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.15;
+}
+
+/* Readable numerals — phones, hours, ratings, stats (sans, not serif) */
+.ec-num,
+.ec-utility__meta-value,
+.ec-strip__card h3,
+.ec-strip__card p,
+.ec-book-cta__phone,
+.ec-book-cta__trust,
+.ec-book-cta__trust strong,
+.ec-google-rating__score,
+.ec-google-rating__meta,
+.ec-stat-card strong,
+.ec-footer a[href^="tel:"],
+.ec-footer [itemprop="telephone"],
+.ec-prose a[href^="tel:"] {
+  font-family: var(--ec-font-num);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  letter-spacing: 0.01em;
 }
 
 .ec-display {
@@ -540,7 +563,6 @@ html {
 .ec-strip__card h3 {
   margin: 0 0 0.35rem;
   font-size: 1.05rem;
-  font-family: var(--ec-font-sans);
   font-weight: 600;
 }
 
@@ -798,6 +820,136 @@ html {
   font-weight: 600;
 }
 
+/* —— Treatments grid (homepage) —— */
+.ec-ba-showcase {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .ec-ba-showcase {
+    grid-template-columns: repeat(2, minmax(0, 28rem));
+    justify-content: center;
+    gap: 1.75rem clamp(1.25rem, 3vw, 2rem);
+  }
+}
+
+.ec-ba-showcase__item {
+  margin: 0;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.ec-ba-showcase__tag {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ec-warm);
+  text-align: center;
+}
+
+.ec-ba-showcase__note {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+.ec-before-after--showcase {
+  min-height: 0;
+  height: auto;
+  gap: 0.75rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(26, 31, 28, 0.08);
+}
+
+.ec-before-after--showcase img {
+  min-height: 0;
+  aspect-ratio: 1;
+  height: auto;
+}
+
+.ec-services--detail {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 576px) {
+  .ec-services--detail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .ec-services--detail {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.ec-service-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--ec-line);
+  background: var(--ec-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ec-service-detail:hover {
+  border-color: rgba(196, 149, 106, 0.45);
+  box-shadow: 0 6px 18px rgba(26, 31, 28, 0.08);
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+.ec-service-detail__thumb {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 54px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ec-surface);
+}
+
+.ec-service-detail__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ec-service-detail__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ec-service-detail__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.005em;
+}
+
+.ec-service-detail__desc {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ec-muted);
+}
+
 /* —— Booking CTA (services) —— */
 .ec-book-cta {
   display: grid;
@@ -914,7 +1066,6 @@ html {
 }
 
 .ec-book-cta__phone {
-  font-family: var(--ec-font-serif);
   font-size: 1.35rem;
   font-weight: 600;
   color: var(--ec-accent);
@@ -1001,8 +1152,6 @@ html {
 .ec-google-rating__score {
   font-size: 1.75rem;
   font-weight: 700;
-  font-family: var(--ec-font-serif);
-  letter-spacing: -0.02em;
 }
 
 .ec-google-rating__stars {
@@ -1674,8 +1823,8 @@ html {
 
 .ec-stat-card strong {
   display: block;
-  font-family: var(--ec-font-serif);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
   color: var(--ec-accent);
   line-height: 1.1;
   margin-bottom: 0.25rem;
