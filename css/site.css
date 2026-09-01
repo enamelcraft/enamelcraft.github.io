@@ -73,8 +73,6 @@ html {
 .ec-book-cta__phone,
 .ec-book-cta__trust,
 .ec-book-cta__trust strong,
-.ec-google-rating__score,
-.ec-google-rating__meta,
 .ec-stat-card strong,
 .ec-footer a[href^="tel:"],
 .ec-footer [itemprop="telephone"],
@@ -950,6 +948,56 @@ html {
   color: var(--ec-muted);
 }
 
+/* —— Services page: larger treatment tiles —— */
+.ec-services--page {
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .ec-services--page {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .ec-services--page {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.ec-services--page .ec-service-detail {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
+  border-radius: var(--ec-radius);
+  overflow: hidden;
+}
+
+.ec-services--page .ec-service-detail__thumb {
+  flex: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+}
+
+.ec-services--page .ec-service-detail__body {
+  padding: 1.1rem 1.25rem 1.3rem;
+  gap: 0.45rem;
+}
+
+.ec-services--page .ec-service-detail__title {
+  font-size: 1.0625rem;
+}
+
+.ec-services--page .ec-service-detail__desc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
 /* —— Booking CTA (services) —— */
 .ec-book-cta {
   display: grid;
@@ -1053,6 +1101,22 @@ html {
   color: var(--ec-ink);
 }
 
+.ec-google-trust {
+  gap: 0.65rem 0.75rem;
+}
+
+.ec-google-logo--trust {
+  height: 1rem;
+}
+
+.ec-google-rating__summary--light .ec-google-rating__score {
+  color: var(--ec-ink);
+}
+
+.ec-google-rating__summary--light .ec-google-rating__count {
+  color: var(--ec-muted);
+}
+
 .ec-book-cta__stars {
   color: #e8a317;
   letter-spacing: 0.06em;
@@ -1144,26 +1208,105 @@ html {
   color: #fff;
 }
 
-.ec-google-rating__google {
-  font-size: 1.35rem;
-  opacity: 0.95;
+.ec-google-logo {
+  display: block;
+  width: auto;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ec-google-rating__link .ec-google-logo {
+  height: 1.35rem;
+}
+
+.ec-google-rating__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 400;
 }
 
 .ec-google-rating__score {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: normal;
+  font-variant-numeric: normal;
+  font-feature-settings: normal;
 }
 
 .ec-google-rating__stars {
-  color: #fbbc04;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
 }
 
-.ec-google-rating__meta {
-  font-size: 0.875rem;
-  opacity: 0.9;
+.ec-google-rating__star {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #fbbc04;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  flex-shrink: 0;
+}
+
+.ec-google-rating__count {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #bdc1c6;
+  letter-spacing: normal;
+  font-variant-numeric: normal;
+  font-feature-settings: normal;
+}
+
+.ec-google-rating__info {
+  display: block;
+  flex-shrink: 0;
+  color: #bdc1c6;
+}
+
+.ec-google-logo--btn {
+  height: 1rem;
+}
+
+.ec-reviews-loading {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.ec-reviews-loading[hidden] {
+  display: none;
+}
+
+.ec-testimonial-card__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.65rem;
+}
+
+.ec-testimonial-card__time {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
   font-weight: 500;
+  opacity: 0.75;
+  font-style: normal;
 }
 
 /* —— Testimonial marquee —— */
@@ -1836,6 +1979,13 @@ html {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ec-warm);
+}
+
+.ec-stat-card--google .ec-google-logo--stat {
+  display: block;
+  height: 0.875rem;
+  width: auto;
+  margin: 0 auto 0.4rem;
 }
 
 .ec-value-grid {
