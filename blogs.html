@@ -240,13 +240,12 @@
     </script>
 
     <!-- Favicon -->
-    <link href="img/logo.png" rel="icon">
+    <link href="img/logo-img/logo.png" rel="icon">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="css/site.css" rel="stylesheet">
 <!-- Custom Styles for Blog Images -->
@@ -268,22 +267,25 @@
 <header class="ec-header">
     <nav class="ec-nav__inner" aria-label="Main">
         <a class="ec-brand" href="index.html" aria-label="Enamel Craft Dental Studio">
-            <img src="img/enamel-craft-dental-studio-logo.png" width="200" height="50" alt="Enamel Craft Dental Studio">
+            <img src="img/logo-img/enamel-craft-dental-studio-logo.png" width="200" height="50" alt="Enamel Craft Dental Studio">
         </a>
         <button type="button" class="ec-nav__toggle d-lg-none" data-ec-nav-toggle aria-expanded="false" aria-controls="ecNavBlogs" aria-label="Open menu">
-            <i class="fas fa-bars" aria-hidden="true"></i>
+            <i class="bi bi-list" aria-hidden="true"></i>
         </button>
         <div class="ec-nav__collapse" id="ecNavBlogs" data-ec-nav-collapse>
             <div class="ec-nav__links">
-                <a href="index.html">Home</a>
+                <a href="index.html" class="is-active">Home</a>
                 <a href="about.html">About</a>
                 <a href="service.html">Services</a>
-                <a href="our-work.html">Our work</a>
+                <a href="our-work.html">Our Work</a>
                 <a href="contact.html">Contact</a>
-                <a href="faq.html">FAQ</a>
-                <a href="blogs.html" class="is-active">Blogs</a>
+                <a href="blogs.html">Blogs</a>
             </div>
-            <a class="ec-btn ec-btn--primary ec-nav__cta" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book appointment</a>
+            <div class="ec-nav__actions">
+                <a class="ec-nav__phone ec-num d-none d-xl-inline-flex" href="tel:+91-7666297468">+91-7666297468</a>
+                <a class="ec-btn ec-btn--outline ec-nav__cta-secondary" href="online-consultation.html" title="Video consult · ₹299">Online consult</a>
+                <a class="ec-btn ec-btn--primary ec-nav__cta" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book visit</a>
+            </div>
         </div>
     </nav>
 </header>
@@ -318,7 +320,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-3d-printing.jpg" alt="3D Printing in Dental Crowns - Enamel Craft Dental Studio">
+                                <img class="img-fluid" src="img/blogs/blog-3d-printing.jpg" alt="3D Printing in Dental Crowns - Enamel Craft Dental Studio">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/3d-printing-in-dental-crowns/" target="_blank">3D Printing</a>
                             </div>
                             <div class="p-4">
@@ -335,7 +337,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-microscopic-dentistry.jpg" alt="Microscopic Dentistry - Precision with Magnification">
+                                <img class="img-fluid" src="img/blogs/blog-microscopic-dentistry.jpg" alt="Microscopic Dentistry - Precision with Magnification">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/microscopic-dentistry-precision-with-magnification/" target="_blank">Technology</a>
                             </div>
                             <div class="p-4">
@@ -352,7 +354,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-ai-dentistry.jpg" alt="AI in Dentistry - Early Cavity Detection">
+                                <img class="img-fluid" src="img/blogs/blog-ai-dentistry.jpg" alt="AI in Dentistry - Early Cavity Detection">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/ai-in-dentistry-early-cavity-detection-dentist-in-baner/" target="_blank">AI Technology</a>
                             </div>
                             <div class="p-4">
@@ -369,7 +371,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-green-dentistry.jpg" alt="Green Dentistry - Eco-Friendly Dental Care">
+                                <img class="img-fluid" src="img/blogs/blog-green-dentistry.jpg" alt="Green Dentistry - Eco-Friendly Dental Care">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/green-dentistry-eco-friendly-dental-care-in-baner/" target="_blank">Eco-Friendly</a>
                             </div>
                             <div class="p-4">
@@ -386,7 +388,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-biomarkers.jpg" alt="Teeth as Biomarkers for Hidden Disease">
+                                <img class="img-fluid" src="img/blogs/blog-biomarkers.jpg" alt="Teeth as Biomarkers for Hidden Disease">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/teeth-as-biomarkers-for-hidden-disease-dentist-in-baner/" target="_blank">Health</a>
                             </div>
                             <div class="p-4">
@@ -403,7 +405,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-smile-design.jpg" alt="Digital Smile Design - The Future of Smile Makeovers">
+                                <img class="img-fluid" src="img/blogs/blog-smile-design.jpg" alt="Digital Smile Design - The Future of Smile Makeovers">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/digital-smile-design-the-future-of-smile-makeovers-in-baner/" target="_blank">Cosmetic</a>
                             </div>
                             <div class="p-4">
@@ -420,7 +422,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-microbiome.jpg" alt="Oral Microbiome and Gut Health Connection">
+                                <img class="img-fluid" src="img/blogs/blog-microbiome.jpg" alt="Oral Microbiome and Gut Health Connection">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/oral-microbiome-gut-health-connection-dentist-in-baner/" target="_blank" rel="noopener noreferrer">Health</a>
                             </div>
                             <div class="p-4">
@@ -437,7 +439,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-rehabilitation.jpg" alt="Full Mouth Rehabilitation - Complete Dental Restoration">
+                                <img class="img-fluid" src="img/blogs/blog-rehabilitation.jpg" alt="Full Mouth Rehabilitation - Complete Dental Restoration">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/full-mouth-rehabilitation-by-dr-girija-best-dentist-in-baner/" target="_blank">Restoration</a>
                             </div>
                             <div class="p-4">
@@ -454,7 +456,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-microdentistry.jpg" alt="Microdentistry - Minimally Invasive Dental Procedures">
+                                <img class="img-fluid" src="img/blogs/blog-microdentistry.jpg" alt="Microdentistry - Minimally Invasive Dental Procedures">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/what-is-microdentistry-dentist-in-pancard-club-road-baner-pune/" target="_blank">Minimally Invasive</a>
                             </div>
                             <div class="p-4">
@@ -471,7 +473,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-crown-lengthening.jpg" alt="Crown Lengthening - Restoring Your Smile">
+                                <img class="img-fluid" src="img/blogs/blog-crown-lengthening.jpg" alt="Crown Lengthening - Restoring Your Smile">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/crown-lengthening-treatment-inpancard-club-road-baner/" target="_blank">Cosmetic</a>
                             </div>
                             <div class="p-4">
@@ -488,7 +490,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-laser-dentistry.jpg" alt="Laser Dentistry - Advanced Dental Treatment">
+                                <img class="img-fluid" src="img/blogs/blog-laser-dentistry.jpg" alt="Laser Dentistry - Advanced Dental Treatment">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/laser-dentistry-in-pancard-club-road-baner-pune-copy/" target="_blank">Technology</a>
                             </div>
                             <div class="p-4">
@@ -505,7 +507,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-anesthesia.jpg" alt="Local Anesthesia in Dentistry - Pain-Free Treatment">
+                                <img class="img-fluid" src="img/blogs/blog-anesthesia.jpg" alt="Local Anesthesia in Dentistry - Pain-Free Treatment">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/local-anesthesia-in-pancard-club-road-baner-pune/" target="_blank">Pain-Free</a>
                             </div>
                             <div class="p-4">
@@ -522,7 +524,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-opg.jpg" alt="OPG Orthopantomogram - Comprehensive Dental X-Ray">
+                                <img class="img-fluid" src="img/blogs/blog-opg.jpg" alt="OPG Orthopantomogram - Comprehensive Dental X-Ray">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/opg-orthopantomogram-in-baner-pune/" target="_blank">Diagnostics</a>
                             </div>
                             <div class="p-4">
@@ -539,7 +541,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-wisdom-tooth.jpg" alt="Wisdom Tooth Extraction - Safe and Painless">
+                                <img class="img-fluid" src="img/blogs/blog-wisdom-tooth.jpg" alt="Wisdom Tooth Extraction - Safe and Painless">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/wisdom-tooth-extraction-in-pancard-club-road-baner-pune/" target="_blank">Surgery</a>
                             </div>
                             <div class="p-4">
@@ -556,7 +558,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-root-canal.jpg" alt="Painless Root Canal Treatment - Advanced Technology">
+                                <img class="img-fluid" src="img/blogs/blog-root-canal.jpg" alt="Painless Root Canal Treatment - Advanced Technology">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/painless-root-canal-treatment-in-pancard-club-road-baner-pune/" target="_blank">Root Canal</a>
                             </div>
                             <div class="p-4">
@@ -573,7 +575,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-composite.jpg" alt="Composite Restoration - Natural-Looking Fillings">
+                                <img class="img-fluid" src="img/blogs/blog-composite.jpg" alt="Composite Restoration - Natural-Looking Fillings">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/composite-restoration-in-pancard-club-road-baner-pune/" target="_blank">Restoration</a>
                             </div>
                             <div class="p-4">
@@ -590,7 +592,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-zirconia.jpg" alt="Zirconia Crowns - Durable and Aesthetic">
+                                <img class="img-fluid" src="img/blogs/blog-zirconia.jpg" alt="Zirconia Crowns - Durable and Aesthetic">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/tooth-fracture-restored-with-zirconia-crown-in-baner-pune/" target="_blank">Crowns</a>
                             </div>
                             <div class="p-4">
@@ -607,7 +609,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-charcoal.jpg" alt="Is Charcoal Toothpaste Safe for Daily Use?">
+                                <img class="img-fluid" src="img/blogs/blog-charcoal.jpg" alt="Is Charcoal Toothpaste Safe for Daily Use?">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/is-charcoal-toothpaste-safe-for-daily-use-dentist-in-pan-card-club-road-baner-pune/" target="_blank">Oral Care</a>
                             </div>
                             <div class="p-4">
@@ -624,7 +626,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-aligners.jpg" alt="Teeth Aligners - Modern Braces for Adults">
+                                <img class="img-fluid" src="img/blogs/blog-aligners.jpg" alt="Teeth Aligners - Modern Braces for Adults">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/teeth-aligners-modern-braces-for-adults-dentist-in-pan-card-club-road-baner-pune/" target="_blank">Orthodontics</a>
                             </div>
                             <div class="p-4">
@@ -641,7 +643,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-wisdom-tooth.jpg" alt="When to consider Wisdom Tooth Removal">
+                                <img class="img-fluid" src="img/blogs/blog-wisdom-tooth.jpg" alt="When to consider Wisdom Tooth Removal">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/when-to-consider-wisdom-tooth-removal-dentist-in-pancard-club-road-baner-pune/" target="_blank">Surgery</a>
                             </div>
                             <div class="p-4">
@@ -658,7 +660,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-stress.jpg" alt="How Stress Affects Your Oral Health">
+                                <img class="img-fluid" src="img/blogs/blog-stress.jpg" alt="How Stress Affects Your Oral Health">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/how-stress-affects-your-oral-health-dentist-in-pancard-club-road-baner-pune/" target="_blank">Health</a>
                             </div>
                             <div class="p-4">
@@ -675,7 +677,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" loading="lazy" src="img/teeth-whitening-baner.jpg" alt="White spots on Teeth - Enamel Hypoplasia explained">
+                                <img class="img-fluid" loading="lazy" src="img/services/teeth-whitening-baner.jpg" alt="White spots on Teeth - Enamel Hypoplasia explained">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/white-spots-on-teeth-enamel-hypoplasia-explained-dentist-in-pancard-club-road-baner-pune/" target="_blank">Dental Health</a>
                             </div>
                             <div class="p-4">
@@ -692,7 +694,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" loading="lazy" src="img/teeth-whitening-baner.jpg" alt="Dental myth busted, teeth whitening facts">
+                                <img class="img-fluid" loading="lazy" src="img/services/teeth-whitening-baner.jpg" alt="Dental myth busted, teeth whitening facts">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/dental-myth-busted-teeth-whitening-facts-dentist-in-pancard-club-road-baner-pune/" target="_blank">Cosmetic</a>
                             </div>
                             <div class="p-4">
@@ -709,7 +711,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="img/blog-1.jpg" alt="Case Discussion: Dental" loading="lazy">
+                                <img class="img-fluid" src="img/blogs/blog-1.jpg" alt="Case Discussion: Dental" loading="lazy">
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="https://blog.enamelcraft.in/case-discussion-dental-dentist-in-pancard-club-road-baner-pune/" target="_blank">Case Study</a>
                             </div>
                             <div class="p-4">
@@ -801,18 +803,19 @@
             <h3>Explore</h3>
             <a href="about.html">About</a>
             <a href="service.html">Services</a>
-            <a href="our-work.html">Our work</a>
+            <a href="our-work.html">Our Work</a>
             <a href="contact.html">Contact</a>
+            <a href="online-consultation.html">Online consult</a>
             <a href="faq.html">FAQ</a>
             <a href="blogs.html">Blogs</a>
             <a href="offer.html">Offers</a>
         </div>
         <div>
             <h3>Services</h3>
-            <a href="https://blog.enamelcraft.in/root-canal-therapy-baner-wakad-aundh-pune/" target="_blank" rel="noopener noreferrer">Root canal therapy</a>
-            <a href="https://blog.enamelcraft.in/dental-implants/" target="_blank" rel="noopener noreferrer">Dental implants</a>
-            <a href="https://blog.enamelcraft.in/cosmetic-dentistry-baner" target="_blank" rel="noopener noreferrer">Cosmetic dentistry</a>
-            <a href="https://blog.enamelcraft.in/dental-cleanings-baner-wakad-aundh-pune-pancard-club-road/" target="_blank" rel="noopener noreferrer">Cleanings</a>
+            <a href="service.html#svc-root-canal">Root canal therapy</a>
+            <a href="service.html#svc-implants">Dental implants</a>
+            <a href="service.html#svc-whitening">Cosmetic dentistry</a>
+            <a href="service.html#svc-scaling">Cleanings</a>
         </div>
         <div itemscope itemtype="https://schema.org/Dentist">
             <h3>Studio</h3>
@@ -822,10 +825,10 @@
             <a href="mailto:enamelcraft.dental@gmail.com" itemprop="email">enamelcraft.dental@gmail.com</a>
             <a href="tel:+917666297468" itemprop="telephone">+91-7666297468</a>
             <div class="ec-footer__social">
-                <a href="https://api.whatsapp.com/send?phone=917666297468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.youtube.com/@EnamelCraft/shorts" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/enamel.craft/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=917666297468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.youtube.com/@EnamelCraft/shorts" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.instagram.com/enamel.craft/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -835,12 +838,13 @@
 </footer>
 
 <div class="ec-mobile-cta" aria-label="Quick contact">
-    <a href="tel:+917666297468" class="ec-mobile-cta__call"><i class="fa fa-phone-alt" aria-hidden="true"></i> Call</a>
-    <a href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" class="ec-mobile-cta__wa" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Book</a>
+    <a href="tel:+917666297468" class="ec-mobile-cta__call"><i class="bi bi-telephone" aria-hidden="true"></i> Call</a>
+    <a href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" class="ec-mobile-cta__wa" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp" aria-hidden="true"></i> Book</a>
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/ec-images.js" defer></script>
 <script src="js/site.js" defer></script>
 
 </body>

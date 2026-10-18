@@ -1,11 +1,69 @@
 (function () {
   "use strict";
 
+  var WA_BOOK =
+    "https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F";
+
   function onReady(fn) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", fn);
     } else {
       fn();
+    }
+  }
+
+  function getGalleryImages() {
+    if (window.EC_IMAGES && Array.isArray(window.EC_IMAGES.gallery)) {
+      return window.EC_IMAGES.gallery;
+    }
+    return [];
+  }
+
+  function initInfoStrip() {
+    if (document.querySelector(".ec-strip")) return;
+
+    var hero = document.querySelector(".ec-hero");
+    var pageHero = document.querySelector(".ec-page-hero");
+    var anchor = hero || pageHero;
+    if (!anchor) return;
+
+    var strip = document.createElement("div");
+    strip.className =
+      "ec-strip ec-strip--prominent" + (pageHero && !hero ? " ec-strip--page" : "");
+    strip.setAttribute("aria-label", "Studio hours, location, phone, and email");
+    strip.innerHTML =
+      '<div class="ec-strip__grid">' +
+      '<div class="ec-strip__card ec-strip__card--hours">' +
+      '<span class="ec-strip__card-row">' +
+      '<span class="ec-strip__icon" aria-hidden="true"><i class="bi bi-clock"></i></span>' +
+      '<span class="ec-strip__card-body">' +
+      '<span class="ec-strip__label">Hours</span>' +
+      "<h3>We are open seven days</h3>" +
+      "<p>Mon–Fri 10:00 AM–8:00 PM · Sat–Sun 11:00 AM–7:00 PM</p>" +
+      "</span></span></div>" +
+      '<a class="ec-strip__card ec-strip__card--link" href="https://maps.google.com/?cid=0x320e0867367f751a" target="_blank" rel="noopener noreferrer">' +
+      '<span class="ec-strip__card-row">' +
+      '<span class="ec-strip__icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>' +
+      '<span class="ec-strip__card-body">' +
+      '<span class="ec-strip__label">Visit</span>' +
+      "<h3>Pancard Club Road</h3>" +
+      "<p>Shop 3, Shreeban, Sneh Park, Baner</p>" +
+      "</span></span></a>" +
+      '<div class="ec-strip__card ec-strip__card--phone">' +
+      '<span class="ec-strip__card-row">' +
+      '<span class="ec-strip__icon" aria-hidden="true"><i class="bi bi-telephone"></i></span>' +
+      '<span class="ec-strip__card-body">' +
+      '<span class="ec-strip__label">Phone</span>' +
+      '<h3 class="ec-num"><a class="ec-strip__tel" href="tel:+917666297468">+91-7666297468</a></h3>' +
+      '<p><a class="ec-strip__email" href="mailto:enamelcraft.dental@gmail.com">enamelcraft.dental@gmail.com</a></p>' +
+      "</span></span></div>" +
+      "</div>";
+
+    anchor.insertAdjacentElement("afterend", strip);
+
+    var next = strip.nextElementSibling;
+    if (next && next.classList.contains("ec-section")) {
+      next.classList.add("ec-section--after-strip");
     }
   }
 
@@ -36,6 +94,46 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  function initNavMore() {
+    document.querySelectorAll("[data-ec-nav-more]").forEach(function (root) {
+      var toggle = root.querySelector(".ec-nav__more-toggle");
+      var menu = root.querySelector(".ec-nav__more-menu");
+      if (!toggle || !menu) return;
+
+      function close() {
+        root.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        menu.hidden = true;
+      }
+
+      function open() {
+        root.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+        menu.hidden = false;
+      }
+
+      toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (menu.hidden) open();
+        else close();
+      });
+
+      menu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          close();
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!root.contains(e.target)) close();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    });
+  }
+
   function initMobileNav() {
     var toggle = document.querySelector("[data-ec-nav-toggle]");
     var collapse = document.querySelector("[data-ec-nav-collapse]");
@@ -56,30 +154,151 @@
     });
   }
 
+  function buildMarqueeGroup(items, startIndex, interactive) {
+    var group = document.createElement("div");
+    group.className = "clinic-marquee__group";
+    if (!interactive) group.setAttribute("aria-hidden", "true");
+
+    items.forEach(function (item, offset) {
+      var index = startIndex + offset;
+      var fig = document.createElement("figure");
+      fig.className = "clinic-marquee__slide";
+      if (interactive) {
+        fig.setAttribute("data-clinic-tour-index", String(index));
+        fig.tabIndex = 0;
+        fig.setAttribute("role", "button");
+      } else {
+        fig.tabIndex = -1;
+      }
+      var img = document.createElement("img");
+      img.src = item.src;
+      img.alt = interactive ? item.alt : "";
+      img.width = 640;
+      img.height = 480;
+      img.loading = "lazy";
+      img.decoding = "async";
+      fig.appendChild(img);
+      group.appendChild(fig);
+    });
+    return group;
+  }
+
+  function initGalleryGrid() {
+    var grid = document.querySelector("[data-ec-gallery-grid]");
+    if (!grid) return;
+    var gallery = getGalleryImages().slice(0, 6);
+    if (!gallery.length) return;
+    grid.innerHTML = "";
+    gallery.forEach(function (item, index) {
+      var fig = document.createElement("figure");
+      fig.className = "ec-gallery-grid__item clinic-marquee__slide";
+      fig.setAttribute("data-clinic-tour-index", String(index));
+      fig.tabIndex = 0;
+      fig.setAttribute("role", "button");
+      var img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt;
+      img.width = 640;
+      img.height = 480;
+      img.loading = "lazy";
+      img.decoding = "async";
+      fig.appendChild(img);
+      grid.appendChild(fig);
+    });
+  }
+
+  function initGalleryMarquee() {
+    var stack = document.querySelector("[data-ec-gallery-marquee]");
+    if (!stack) return;
+    var gallery = getGalleryImages();
+    if (!gallery.length) return;
+
+    var mid = Math.ceil(gallery.length / 2);
+    var rowA = gallery.slice(0, mid);
+    var rowB = gallery.slice(mid);
+
+    stack.innerHTML = "";
+
+    function addRow(items, reverse, indexOffset) {
+      var row = document.createElement("div");
+      row.className = "clinic-marquee" + (reverse ? " clinic-marquee--reverse" : "");
+      var track = document.createElement("div");
+      track.className = "clinic-marquee__track";
+      track.appendChild(buildMarqueeGroup(items, indexOffset, true));
+      track.appendChild(buildMarqueeGroup(items, indexOffset, false));
+      row.appendChild(track);
+      stack.appendChild(row);
+    }
+
+    addRow(rowA, false, 0);
+    addRow(rowB, true, rowA.length);
+  }
+
+  function heroSlideSrcKey(src) {
+    try {
+      return new URL(src, window.location.href).pathname;
+    } catch (e) {
+      return src;
+    }
+  }
+
+  function initHeroSlides() {
+    var container = document.querySelector("[data-ec-hero-slides]");
+    if (!container) return;
+    var hero =
+      window.EC_IMAGES && Array.isArray(window.EC_IMAGES.hero)
+        ? window.EC_IMAGES.hero
+        : [];
+    if (!hero.length) return;
+
+    var existing = container.querySelectorAll(".ec-hero__slide");
+    var have = {};
+    existing.forEach(function (img) {
+      have[heroSlideSrcKey(img.getAttribute("src") || img.src)] = true;
+    });
+
+    function heroSlideNeedsTopFocus(src) {
+      return /netflixDental/i.test(src || "");
+    }
+
+    function appendSlide(item, isFirst) {
+      var img = document.createElement("img");
+      var classes = "ec-hero__slide";
+      if (heroSlideNeedsTopFocus(item.src)) classes += " ec-hero__slide--focus-top";
+      if (isFirst) classes += " is-active";
+      img.className = classes;
+      img.src = item.src;
+      img.alt = item.alt;
+      img.width = 1920;
+      img.height = 1080;
+      if (isFirst) img.setAttribute("fetchpriority", "high");
+      else img.loading = "lazy";
+      container.appendChild(img);
+    }
+
+    if (!existing.length) {
+      container.innerHTML = "";
+      hero.forEach(function (item, idx) {
+        appendSlide(item, idx === 0);
+      });
+      return;
+    }
+
+    hero.forEach(function (item) {
+      if (have[heroSlideSrcKey(item.src)]) return;
+      appendSlide(item, false);
+    });
+  }
+
   function initClinicTourLightbox() {
-    var GALLERY = [
-      { src: "img/ecGallary01.jpg", alt: "Best dental clinic in Baner Pune" },
-      { src: "img/ecGallary02.jpg", alt: "Affordable dentist near Balewadi Baner Road" },
-      { src: "img/ecGallary03.jpg", alt: "Painless Root Canal Treatment in Baner" },
-      { src: "img/ecGallary11.jpg", alt: "Top-rated cosmetic dental clinic near me" },
-      { src: "img/ecGallary04.jpg", alt: "Best dentist in Pan Card Club Road Baner" },
-      { src: "img/ecGallary12.jpg", alt: "The best dental studio near me" },
-      { src: "img/ecGallary05.jpg", alt: "Professional dental services in Baner Pune" },
-      { src: "img/ecGallary06.jpg", alt: "Nearby dental clinic with affordable fees" },
-      { src: "img/ecGallary07.jpg", alt: "Cosmetic dental care for a perfect smile" },
-      { src: "img/ecGallary08.jpg", alt: "Smile makeover with top-rated dentist near me" },
-      { src: "img/ecGallary09.jpg", alt: "The dental studio offering expert care" },
-      { src: "img/ecGallary10.jpg", alt: "Best-rated dentist near Balewadi Baner Road" },
-      { src: "assets-lib/1.png", alt: "Enamel Craft Dental Studio reception and branding" },
-      { src: "assets-lib/2.png", alt: "Treatment and care area at Enamel Craft Dental Studio" },
-      { src: "assets-lib/3.png", alt: "Dental studio interior in Baner" },
-      { src: "assets-lib/4.png", alt: "Modern dental clinic space in Baner Pune" },
-      { src: "assets-lib/5.png", alt: "Calm clinical environment at Enamel Craft" },
-    ];
+    var GALLERY = getGalleryImages();
 
     var root = document.getElementById("clinic-tour-lightbox");
-    var stack = document.querySelector(".clinic-marquee-stack");
-    if (!root || !stack) return;
+    var stack =
+      document.querySelector("[data-ec-gallery-marquee]") ||
+      document.querySelector("[data-ec-gallery-root]") ||
+      document.querySelector(".clinic-marquee-stack");
+    if (!root || !stack || !GALLERY.length) return;
 
     var imgEl = document.getElementById("clinic-tour-lightbox-img");
     var captionEl = document.getElementById("clinic-tour-lightbox-caption");
@@ -186,7 +405,7 @@
       return;
     }
     var i = 0;
-    var ms = 6500;
+    var ms = 7000;
     function show(n) {
       slides.forEach(function (s, idx) {
         s.classList.toggle("is-active", idx === n);
@@ -197,6 +416,55 @@
       i = (i + 1) % slides.length;
       show(i);
     }, ms);
+  }
+
+  function initCaseLightbox() {
+    var root = document.getElementById("ec-case-lightbox");
+    if (!root) return;
+    var imgEl = document.getElementById("ec-case-lightbox-img");
+    var backdrop = root.querySelector(".ec-case-lightbox__backdrop");
+    var closeBtn = root.querySelector(".ec-case-lightbox__close");
+    if (!imgEl || !backdrop || !closeBtn) return;
+
+    var lastFocus = null;
+
+    function close() {
+      root.hidden = true;
+      document.body.style.overflow = "";
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus();
+      }
+    }
+
+    function open(figure) {
+      var img = figure.querySelector("img");
+      if (!img) return;
+      imgEl.src = img.currentSrc || img.src;
+      imgEl.alt = img.alt || "Case clinical photograph";
+      lastFocus = document.activeElement;
+      root.hidden = false;
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    document.querySelectorAll("[data-ec-case-enlarge]").forEach(function (figure) {
+      figure.addEventListener("click", function (e) {
+        if (e.target.closest("a")) return;
+        open(figure);
+      });
+      figure.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open(figure);
+        }
+      });
+    });
+
+    backdrop.addEventListener("click", close);
+    closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) {
+      if (!root.hidden && e.key === "Escape") close();
+    });
   }
 
   function initReveal() {
@@ -220,11 +488,17 @@
   }
 
   onReady(function () {
+    initInfoStrip();
     initSpinner();
     initHeaderScroll();
+    initNavMore();
     initMobileNav();
+    initHeroSlides();
+    initGalleryGrid();
+    initGalleryMarquee();
     initClinicTourLightbox();
     initHeroCarousel();
+    initCaseLightbox();
     initReveal();
   });
 })();

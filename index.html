@@ -137,14 +137,14 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.enamelcraft.in/"}]}
     </script>
-    <link href="img/logo.png" rel="icon">
+    <link href="img/logo-img/logo.png" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="css/site.css" rel="stylesheet">
+    <link rel="preload" as="image" href="img/hero-img/netflixDental.jpg" fetchpriority="high">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0HCYCFXSZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -160,81 +160,66 @@
 <header class="ec-header">
     <nav class="ec-nav__inner" aria-label="Main">
         <a class="ec-brand" href="index.html" aria-label="Enamel Craft Dental Studio">
-            <img src="img/enamel-craft-dental-studio-logo.png" width="200" height="50" alt="Enamel Craft Dental Studio">
+            <img src="img/logo-img/enamel-craft-dental-studio-logo.png" width="200" height="50" alt="Enamel Craft Dental Studio">
         </a>
-        <button type="button" class="ec-nav__toggle d-lg-none" data-ec-nav-toggle aria-expanded="false" aria-controls="ecNavCollapse" aria-label="Open menu">
-            <i class="fas fa-bars" aria-hidden="true"></i>
+        <button type="button" class="ec-nav__toggle d-lg-none" data-ec-nav-toggle aria-expanded="false" aria-controls="ecNavIndex" aria-label="Open menu">
+            <i class="bi bi-list" aria-hidden="true"></i>
         </button>
-        <div class="ec-nav__collapse" id="ecNavCollapse" data-ec-nav-collapse>
+        <div class="ec-nav__collapse" id="ecNavIndex" data-ec-nav-collapse>
             <div class="ec-nav__links">
                 <a href="index.html" class="is-active">Home</a>
                 <a href="about.html">About</a>
                 <a href="service.html">Services</a>
-                <a href="our-work.html">Our work</a>
+                <a href="our-work.html">Our Work</a>
                 <a href="contact.html">Contact</a>
-                <a href="faq.html">FAQ</a>
                 <a href="blogs.html">Blogs</a>
             </div>
-            <a class="ec-btn ec-btn--primary ec-nav__cta" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book appointment</a>
+            <div class="ec-nav__actions">
+                <a class="ec-nav__phone ec-num d-none d-xl-inline-flex" href="tel:+91-7666297468">+91-7666297468</a>
+                <a class="ec-btn ec-btn--outline ec-nav__cta-secondary" href="online-consultation.html" title="Video consult · ₹299">Online consult</a>
+                <a class="ec-btn ec-btn--primary ec-nav__cta" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book visit</a>
+            </div>
         </div>
     </nav>
 </header>
 
-<section class="ec-hero" aria-label="Welcome">
-    <div class="ec-hero__media" data-ec-hero-carousel>
-        <div class="ec-hero__slides">
-            <img class="ec-hero__slide is-active" src="img/ecGallary01.jpg" alt="Enamel Craft Dental Studio reception and waiting area" width="1920" height="1080" fetchpriority="high">
-            <img class="ec-hero__slide" src="assets-lib/2.png" alt="Treatment room at Enamel Craft Dental Studio Baner" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="img/ecGallary03.jpg" alt="Dental care station with modern equipment" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="assets-lib/4.png" alt="Bright clinical space at Enamel Craft" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="img/ecGallary08.jpg" alt="Smile makeover and cosmetic dentistry area" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="assets-lib/1.png" alt="Enamel Craft Dental Studio interior overview" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="img/ecGallary11.jpg" alt="Cosmetic dental clinic environment" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="assets-lib/3.png" alt="Patient-focused dental studio in Baner" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="img/ecGallary06.jpg" alt="Professional dental services in Baner Pune" width="1920" height="1080" loading="lazy">
-            <img class="ec-hero__slide" src="assets-lib/5.png" alt="Calm, light-filled dental studio" width="1920" height="1080" loading="lazy">
+<section class="ec-hero" aria-label="Welcome" data-ec-hero-carousel>
+    <div class="ec-hero__media">
+        <div class="ec-hero__slides" data-ec-hero-slides>
+            <img class="ec-hero__slide ec-hero__slide--focus-top is-active" src="img/hero-img/netflixDental.jpg" alt="Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display" width="1920" height="1080" fetchpriority="high" decoding="async">
         </div>
     </div>
     <div class="ec-hero__overlay" aria-hidden="true"></div>
     <div class="ec-hero__content">
         <p class="ec-hero__eyebrow">Baner, Pune</p>
-        <h1>Thoughtful dentistry, beautifully delivered</h1>
-        <p class="ec-hero__sub">Cosmetic, restorative, and preventive care with a calm, precise approach—near Pancard Club Road.</p>
+        <h1>Painless root canals &amp; smile makeovers in Baner</h1>
+        <p class="ec-hero__sub">Cosmetic and restorative dentistry on Pancard Club Road—microscope-guided care with Dr. Girija Nandanwar Dhakite.</p>
         <div class="ec-hero__actions">
-            <a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
-            <a class="ec-btn ec-btn--ghost" href="tel:+917666297468">Call the studio</a>
+            <a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book visit</a>
         </div>
+        <p class="ec-hero__secondary">
+            <a class="ec-hero__consult-link" href="online-consultation.html">Online video consult · ₹299</a>
+        </p>
+        <p class="ec-hero__trust">
+            <span class="ec-hero__trust-item"><span aria-hidden="true">★</span> 5.0</span>
+            <span class="ec-hero__trust-sep" aria-hidden="true">·</span>
+            <a class="ec-hero__trust-item" href="https://g.co/kgs/brU3Rn9" target="_blank" rel="noopener noreferrer">130+ Google reviews</a>
+            <span class="ec-hero__trust-sep" aria-hidden="true">·</span>
+            <span class="ec-hero__trust-item">8 years experience</span>
+            <span class="ec-hero__trust-sep" aria-hidden="true">·</span>
+            <span class="ec-hero__trust-item">Open 7 days</span>
+        </p>
     </div>
 </section>
 
-<div class="ec-strip">
-    <div class="ec-strip__grid">
-        <div class="ec-strip__card">
-            <div class="ec-strip__label">Hours</div>
-            <h3>We are open seven days</h3>
-            <p>Mon–Fri 10–8 · Sat–Sun 11–7</p>
-        </div>
-        <div class="ec-strip__card">
-            <div class="ec-strip__label">Visit</div>
-            <h3>Pancard Club Road</h3>
-            <p>Shop 3, Shreeban, Sneh Park, Baner</p>
-        </div>
-        <div class="ec-strip__card">
-            <div class="ec-strip__label">Phone</div>
-            <h3>+91-7666297468</h3>
-            <p><a class="ec-link" href="mailto:enamelcraft.dental@gmail.com">enamelcraft.dental@gmail.com</a></p>
-        </div>
-    </div>
-</div>
-
 <section class="ec-section" data-ec-reveal>
     <div class="ec-section__inner">
-        <header class="ec-section__head">
+        <header class="ec-section__head ec-section__head--compact">
             <p class="ec-eyebrow">About</p>
             <h2>Enamel Craft Dental Studio</h2>
             <p class="ec-lead">A Baner practice where artistry meets clinical excellence—led by Dr. Girija Nandanwar Dhakite.</p>
         </header>
-        <div class="ec-split">
+        <div class="ec-split ec-split--about">
             <div class="ec-prose">
                 <p>Welcome to Enamel Craft Dental Studio. We focus on <strong>cosmetic dentistry, orthodontics, and smile makeovers</strong> with an emphasis on aesthetics, precision, and your comfort—whether you need a <strong>painless root canal</strong>, implants, or routine care.</p>
                 <p>Dr. Girija is a dental surgeon with a <strong>Fellowship in Microdentistry</strong> from Government Dental College, Mumbai, and eight years of experience across cosmetic work, endodontics, and implants.</p>
@@ -244,230 +229,85 @@
                     <li>Transparent, fair pricing</li>
                     <li>Extended hours for busy schedules</li>
                 </ul>
-                <p class="mt-4 mb-0"><a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Schedule a visit</a></p>
+                <p class="mt-4 mb-0"><a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a></p>
             </div>
-            <div class="ec-media-frame">
-                <img src="assets-lib/Headshots/dr-g1.png" alt="Dr. Girija Nandanwar Dhakite, dental surgeon in Baner" width="800" height="1000" loading="lazy">
+            <div class="ec-media-frame ec-media-frame--doctor ec-media-frame--doctor-home">
+                <img src="img/dr-girija/dr-2.png" alt="Dr. Girija Nandanwar Dhakite, dental surgeon in Baner" width="800" height="1000" loading="lazy" decoding="async">
             </div>
         </div>
 
         <header class="ec-section__head ec-section--tight">
             <h2 class="ec-section__h-sub">Inside the studio</h2>
-            <p class="ec-lead mb-0">A quiet, light-filled space designed for focused care.</p>
+            <p class="ec-lead mb-0">A quiet, light-filled space designed for focused care. Tap a photo to browse the gallery.</p>
         </header>
-        <div class="clinic-marquee-stack ec-studio-marquee" aria-label="Clinic photo gallery">
-            <div class="clinic-marquee">
-                <div class="clinic-marquee__track">
-                    <div class="clinic-marquee__group">
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="0" tabindex="0" role="button"><img src="img/ecGallary01.jpg" alt="Dental clinic in Baner Pune" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="1" tabindex="0" role="button"><img src="img/ecGallary02.jpg" alt="Dentist near Balewadi Baner Road" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="2" tabindex="0" role="button"><img src="img/ecGallary03.jpg" alt="Root canal treatment in Baner" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="13" tabindex="0" role="button"><img src="assets-lib/2.png" alt="Treatment space at Enamel Craft" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="3" tabindex="0" role="button"><img src="img/ecGallary11.jpg" alt="Cosmetic dental clinic" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="4" tabindex="0" role="button"><img src="img/ecGallary04.jpg" alt="Dentist on Pan Card Club Road" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="14" tabindex="0" role="button"><img src="assets-lib/3.png" alt="Dental studio atmosphere" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="5" tabindex="0" role="button"><img src="img/ecGallary12.jpg" alt="Dental studio interior" width="640" height="480" loading="lazy"></figure>
-                    </div>
-                    <div class="clinic-marquee__group" aria-hidden="true">
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary01.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary02.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary03.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="assets-lib/2.png" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary11.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary04.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="assets-lib/3.png" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary12.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                    </div>
-                </div>
-            </div>
-            <div class="clinic-marquee clinic-marquee--reverse">
-                <div class="clinic-marquee__track">
-                    <div class="clinic-marquee__group">
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="6" tabindex="0" role="button"><img src="img/ecGallary05.jpg" alt="Dental services Baner" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="7" tabindex="0" role="button"><img src="img/ecGallary06.jpg" alt="Dental clinic Baner" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="12" tabindex="0" role="button"><img src="assets-lib/1.png" alt="Reception and clinic branding" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="8" tabindex="0" role="button"><img src="img/ecGallary07.jpg" alt="Cosmetic dental care" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="9" tabindex="0" role="button"><img src="img/ecGallary08.jpg" alt="Smile makeover" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="15" tabindex="0" role="button"><img src="assets-lib/4.png" alt="Modern dental care in Baner" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="10" tabindex="0" role="button"><img src="img/ecGallary09.jpg" alt="Expert dental care" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" data-clinic-tour-index="16" tabindex="0" role="button"><img src="assets-lib/5.png" alt="Clinic interior detail" width="640" height="480" loading="lazy"></figure>
-                    </div>
-                    <div class="clinic-marquee__group" aria-hidden="true">
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary05.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary06.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="assets-lib/1.png" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary07.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary08.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="assets-lib/4.png" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="img/ecGallary09.jpg" alt="" width="640" height="480" loading="lazy"></figure>
-                        <figure class="clinic-marquee__slide" tabindex="-1"><img src="assets-lib/5.png" alt="" width="640" height="480" loading="lazy"></figure>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="clinic-marquee-stack ec-studio-marquee" data-ec-gallery-marquee data-ec-gallery-root aria-label="Clinic photo gallery"></div>
     </div>
 </section>
 
-<section class="ec-section" style="background:var(--ec-surface)" data-ec-reveal>
+<section class="ec-section ec-section--surface" data-ec-reveal>
     <div class="ec-section__inner">
         <header class="ec-section__head">
             <p class="ec-eyebrow">Services</p>
             <h2>Treatments we are known for</h2>
-            <p class="ec-lead">From microscope-guided endodontics to smile design—explore articles on our blog for detail on each treatment.</p>
+            <p class="ec-lead">Flagship care at our Baner studio—from microscope-guided root canals to smile design.</p>
         </header>
-        <div class="ec-ba-showcase">
-            <article class="ec-ba-showcase__item">
-                <p class="ec-ba-showcase__tag">Smile refresh</p>
-                <div class="ec-before-after ec-before-after--showcase">
-                    <figure>
-                        <img src="img/before.jpg" alt="Teeth before cosmetic treatment (illustrative)" width="320" height="240" loading="lazy">
-                        <figcaption>Before</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/after.jpg" alt="Teeth after cosmetic treatment (illustrative)" width="320" height="240" loading="lazy">
-                        <figcaption>After</figcaption>
-                    </figure>
-                </div>
-            </article>
-            <article class="ec-ba-showcase__item">
-                <p class="ec-ba-showcase__tag">Teeth whitening</p>
-                <div class="ec-before-after ec-before-after--showcase">
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Smile before whitening (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>Before</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Smile after whitening (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>After</figcaption>
-                    </figure>
-                </div>
-            </article>
-            <article class="ec-ba-showcase__item">
-                <p class="ec-ba-showcase__tag">Aligners &amp; bite</p>
-                <div class="ec-before-after ec-before-after--showcase">
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Teeth before alignment (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>Before</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Teeth after alignment (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>After</figcaption>
-                    </figure>
-                </div>
-            </article>
-            <article class="ec-ba-showcase__item">
-                <p class="ec-ba-showcase__tag">Crowns &amp; veneers</p>
-                <div class="ec-before-after ec-before-after--showcase">
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Smile before crown work (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>Before</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&amp;h=300&amp;fit=crop&amp;q=80" alt="Smile after crown work (stock placeholder)" width="320" height="240" loading="lazy">
-                        <figcaption>After</figcaption>
-                    </figure>
-                </div>
-            </article>
-        </div>
-        <p class="ec-stock-note ec-ba-showcase__note">Before/after sets are illustrative placeholders for layout—actual outcomes vary by case. See <a class="ec-link" href="our-work.html">our work</a> for how we document care.</p>
-        <div class="ec-services ec-services--detail">
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/root-canal-therapy-baner-wakad-aundh-pune/" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-root-canal.jpg" alt="Root canal X-ray before and after" width="112" height="84" loading="lazy"></span>
+        <div class="ec-services ec-services--detail ec-services--flagship">
+            <a class="ec-service-detail" id="svc-root-canal" href="service.html#svc-root-canal">
+                <span class="ec-service-detail__thumb"><img src="img/services/root-canal-treatment-baner.jpg" alt="Root canal X-ray before and after" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
                     <span class="ec-service-detail__title">Root canal treatment</span>
                     <span class="ec-service-detail__desc">Save an infected tooth with microscope-guided, near-painless endodontics.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dental-implants/" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-opg.jpg" alt="Panoramic X-ray for implant planning" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Dental implants</span>
-                    <span class="ec-service-detail__desc">Replace missing teeth with titanium roots and natural-looking crowns.</span>
-                </span>
-            </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dentures-baner-pune" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/dentures-pune.jpg" alt="Complete dentures held by clinician" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Dentures</span>
-                    <span class="ec-service-detail__desc">Comfortable full or partial dentures to restore chewing and confidence.</span>
-                </span>
-            </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/orthodontic-treatment-baner" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-aligners.jpg" alt="Clear aligner on dental arch" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Invisible aligners</span>
-                    <span class="ec-service-detail__desc">Clear, removable trays that straighten teeth discreetly over time.</span>
-                </span>
-            </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dental-bridges-baner-pune" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/dental-bridges-pune.jpg" alt="Three-unit dental bridge on prepared teeth" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Dental bridges</span>
-                    <span class="ec-service-detail__desc">Fixed prosthetic teeth anchored to neighbouring healthy teeth.</span>
-                </span>
-            </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/cosmetic-dentistry-baner" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/teeth-whitening-baner.jpg" alt="Teeth whitening before and after" width="112" height="84" loading="lazy"></span>
+            <a class="ec-service-detail" id="svc-whitening" href="service.html#svc-whitening">
+                <span class="ec-service-detail__thumb"><img src="img/services/teeth-whitening-baner.jpg" alt="Teeth whitening before and after" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
                     <span class="ec-service-detail__title">Teeth whitening</span>
                     <span class="ec-service-detail__desc">Professional bleaching for a brighter, more even smile in one visit.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dental-cleanings-baner-wakad-aundh-pune-pancard-club-road/" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/dental-scaling-polishing-pune.jpg" alt="Dental scaling and tartar removal" width="112" height="84" loading="lazy"></span>
+            <a class="ec-service-detail" id="svc-aligners" href="service.html#svc-aligners">
+                <span class="ec-service-detail__thumb"><img src="img/services/invisible-aligners-baner.jpg" alt="Clear aligner on dental arch" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Dental scaling</span>
-                    <span class="ec-service-detail__desc">Deep cleaning to remove plaque, tartar, and keep gums healthy.</span>
+                    <span class="ec-service-detail__title">Invisible aligners</span>
+                    <span class="ec-service-detail__desc">Clear, removable trays that straighten teeth discreetly over time.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dental-fillings-baner-wakad-aundh-pune/" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-composite.jpg" alt="Composite filling before and after" width="112" height="84" loading="lazy"></span>
+            <a class="ec-service-detail" id="svc-composite" href="service.html#svc-composite">
+                <span class="ec-service-detail__thumb"><img src="img/services/composite-restoration-baner.jpg" alt="Composite filling before and after" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
                     <span class="ec-service-detail__title">Composite restoration</span>
                     <span class="ec-service-detail__desc">Tooth-coloured fillings that blend seamlessly with natural enamel.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/oral-surgery-baner" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-wisdom-tooth.jpg" alt="Impacted wisdom tooth on X-ray" width="112" height="84" loading="lazy"></span>
+            <a class="ec-service-detail" id="svc-wisdom" href="service.html#svc-wisdom">
+                <span class="ec-service-detail__thumb"><img src="img/services/wisdom-tooth-extraction-baner.jpg" alt="Impacted wisdom tooth on X-ray" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
                     <span class="ec-service-detail__title">Wisdom tooth extraction</span>
                     <span class="ec-service-detail__desc">Safe removal of impacted or painful third molars under local anaesthesia.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/cosmetic-dentistry-baner" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/veneers-smile-makeover-baner.jpg" alt="Porcelain veneer placement" width="112" height="84" loading="lazy"></span>
+            <a class="ec-service-detail" id="svc-veneers" href="service.html#svc-veneers">
+                <span class="ec-service-detail__thumb"><img src="img/services/veneers-smile-makeover-baner.jpg" alt="Porcelain veneer placement" width="112" height="84" loading="lazy"></span>
                 <span class="ec-service-detail__body">
                     <span class="ec-service-detail__title">Veneers</span>
                     <span class="ec-service-detail__desc">Thin porcelain shells to refine colour, shape, and smile symmetry.</span>
                 </span>
             </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/dental-crowns-baner-wakad-aundh-pune" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/blog-zirconia.jpg" alt="Zirconia crown restoration before and after" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Zirconia crowns</span>
-                    <span class="ec-service-detail__desc">Strong, metal-free caps for damaged or root-treated teeth.</span>
-                </span>
-            </a>
-            <a class="ec-service-detail" href="https://blog.enamelcraft.in/pedodontist-treatments-at-enamel-craft-dental-studio-baner/" target="_blank" rel="noopener noreferrer">
-                <span class="ec-service-detail__thumb"><img src="img/pediatric-dentistry-baner.jpg" alt="Pediatric dental treatment in clinic" width="112" height="84" loading="lazy"></span>
-                <span class="ec-service-detail__body">
-                    <span class="ec-service-detail__title">Pedodontic treatment</span>
-                    <span class="ec-service-detail__desc">Gentle, child-friendly care for growing smiles and prevention.</span>
-                </span>
-            </a>
         </div>
+        <p class="ec-section__foot mb-0"><a class="ec-btn ec-btn--outline" href="service.html">All services →</a></p>
         <div class="row g-4 mt-2 align-items-stretch ec-row-equal">
             <div class="col-lg-12">
                 <div class="ec-book-cta">
                     <div class="ec-book-cta__visual" aria-hidden="true">
-                        <img src="img/ecGallary03.jpg" alt="" width="900" height="700" loading="lazy">
+                        <img src="img/gallery/ecGallary03.jpg" alt="" width="900" height="700" loading="lazy">
                     </div>
                     <div class="ec-book-cta__body">
                         <p class="ec-eyebrow">Appointments</p>
                         <h3>Ready when you are</h3>
                         <p>Same-day slots when we can, extended hours, and a team that answers clearly—so booking feels simple, not like a chore.</p>
                         <div class="ec-book-cta__trust ec-google-trust">
-                            <img class="ec-google-logo ec-google-logo--trust" src="img/google-logo.svg" alt="Google" width="59" height="20">
+                            <img class="ec-google-logo ec-google-logo--trust" src="img/services/google-logo.svg" alt="Google" width="59" height="20">
                             <span class="ec-google-rating__summary ec-google-rating__summary--light" role="img" aria-label="Rated 5.0 out of 5, 130+ reviews">
                                 <span class="ec-google-rating__score" aria-hidden="true">5.0</span>
                                 <span class="ec-google-rating__stars" aria-hidden="true">
@@ -481,7 +321,8 @@
                             </span>
                         </div>
                         <div class="ec-book-cta__actions">
-                            <a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">WhatsApp to book</a>
+                            <a class="ec-btn ec-btn--primary" href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book visit</a>
+                            <a class="ec-btn ec-btn--outline" href="online-consultation.html">Online consult · ₹299</a>
                             <a class="ec-book-cta__phone" href="tel:+917666297468">+91-7666297468</a>
                         </div>
                     </div>
@@ -495,46 +336,52 @@
     <div class="ec-section__inner">
         <header class="ec-section__head">
             <p class="ec-eyebrow">Results</p>
-            <h2>Our work—cases that show the craft</h2>
-            <p class="ec-lead">Before-and-after style documentation helps you see what careful planning looks like—not a promise of identical results, but how we think about aesthetics, bite health, and longevity together.</p>
+            <h2>Transformations you can see</h2>
+            <p class="ec-lead">Real before-and-after photography from our Baner studio—tap a case to read how we planned each smile.</p>
         </header>
-        <div class="ec-cases-preview">
-            <article class="ec-case-spotlight">
-                <div class="ec-case-spotlight__ba" aria-hidden="true">
-                    <figure><img src="img/before.jpg" alt="Teeth before alignment or whitening (illustrative)" width="400" height="400" loading="lazy"></figure>
-                    <figure><img src="img/after.jpg" alt="Teeth after alignment or whitening (illustrative)" width="400" height="400" loading="lazy"></figure>
+        <div class="ec-cases-showcase ec-cases-showcase--hero">
+            <a class="ec-case-teaser" href="our-work.html#case-composite-diastema">
+                <div class="ec-case-teaser__visual ec-case-teaser__visual--composite ec-case-teaser__visual--stacked">
+                    <img src="img/our-work/case-diastema.jpeg" alt="" loading="eager" fetchpriority="high" decoding="async">
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-before">Before</span>
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-after ec-case-teaser__tag--after">After</span>
                 </div>
-                <div class="ec-case-spotlight__body">
-                    <h3>Smile alignment &amp; whitening</h3>
-                    <p>Sample case: uneven shade and mild crowding—combined whitening plus aligner-ready staging (illustrative dental photography).</p>
-                    <a class="ec-link" href="our-work.html#case-align">Read the case walkthrough</a>
+                <div class="ec-case-teaser__body">
+                    <span class="ec-case-teaser__chip">Cosmetic bonding</span>
+                    <h3>Gaps closed between front teeth</h3>
+                    <p>Conservative composites for a natural, client-ready smile—no veneers required.</p>
+                    <span class="ec-case-teaser__cta">View this case study</span>
                 </div>
-            </article>
-            <article class="ec-case-spotlight">
-                <div class="ec-case-spotlight__ba" aria-hidden="true">
-                    <figure><img src="img/blog-opg.jpg" alt="Panoramic X-ray for implant planning (illustrative)" width="400" height="400" loading="lazy"></figure>
-                    <figure><img src="img/dental-implants-baner-pune.jpg" alt="Dental implant treatment context (illustrative)" width="400" height="400" loading="lazy"></figure>
+            </a>
+            <a class="ec-case-teaser" href="our-work.html#case-fracture-crown-wedding">
+                <div class="ec-case-teaser__visual ec-case-teaser__visual--composite ec-case-teaser__visual--stacked">
+                    <img src="img/our-work/case-fracture-crown.jpeg" alt="" loading="lazy" decoding="async">
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-before">Before</span>
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-after ec-case-teaser__tag--after">After</span>
                 </div>
-                <div class="ec-case-spotlight__body">
-                    <h3>Implant-supported bite</h3>
-                    <p>Sample case: missing posterior tooth—restoring chewing comfort with staged implant planning (radiograph and treatment imagery).</p>
-                    <a class="ec-link" href="our-work.html#case-implant">See how we sequence visits</a>
+                <div class="ec-case-teaser__body">
+                    <span class="ec-case-teaser__chip">Emergency smile</span>
+                    <h3>Fractured front tooth before a wedding</h3>
+                    <p>Root canal, post &amp; core, and zirconia crown—ready in time for his big day.</p>
+                    <span class="ec-case-teaser__cta">View this case study</span>
                 </div>
-            </article>
-            <article class="ec-case-spotlight">
-                <div class="ec-case-spotlight__ba" aria-hidden="true">
-                    <figure><img src="img/blog-rehabilitation.jpg" alt="Worn dentition and full-mouth rehabilitation planning (illustrative)" width="400" height="400" loading="lazy"></figure>
-                    <figure><img src="img/zirconia-crowns-baner.jpg" alt="Zirconia crowns and bite rebuilding (illustrative)" width="400" height="400" loading="lazy"></figure>
+            </a>
+            <a class="ec-case-teaser" href="our-work.html#case-fluorosis-rehab">
+                <div class="ec-case-teaser__visual ec-case-teaser__visual--composite ec-case-teaser__visual--stacked">
+                    <img src="img/our-work/case-fluorosis.jpeg" alt="" loading="lazy" decoding="async">
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-before">Before</span>
+                    <span class="ec-case-teaser__tag ec-case-teaser__tag--pair-after ec-case-teaser__tag--after">After</span>
                 </div>
-                <div class="ec-case-spotlight__body">
-                    <h3>Full-arch rehabilitation</h3>
-                    <p>Sample case: worn teeth and collapsed vertical dimension—planning bite opening before ceramics (illustrative clinical photography).</p>
-                    <a class="ec-link" href="our-work.html#case-rehab">Explore the treatment arc</a>
+                <div class="ec-case-teaser__body">
+                    <span class="ec-case-teaser__chip">Smile rehab</span>
+                    <h3>Fluorosis &amp; worn front teeth refreshed</h3>
+                    <p>Phase 1 composites restored colour and edges; orthodontics planned next.</p>
+                    <span class="ec-case-teaser__cta">View this case study</span>
                 </div>
-            </article>
+            </a>
         </div>
-        <p class="ec-stock-note">Photos above use on-site clinical and educational imagery to show treatment themes. Individual results vary; consent-approved patient galleries are shared in consultation when appropriate.</p>
-        <p class="mt-4 mb-0"><a class="ec-btn ec-btn--primary" href="our-work.html">View full case gallery</a></p>
+        <p class="ec-stock-note">Case previews use consent-approved clinical photography where shown. Individual results vary; treatment options are discussed before care begins.</p>
+        <p class="ec-section__foot mb-0"><a class="ec-btn ec-btn--primary" href="our-work.html">View gallery</a></p>
     </div>
 </section>
 
@@ -544,7 +391,7 @@
         <p class="ec-reviews__intro">Patient reviews from Google — real experiences from people who trust us with their smiles.</p>
         <div class="ec-google-rating">
             <a class="ec-google-rating__link" href="https://g.co/kgs/brU3Rn9" target="_blank" rel="noopener noreferrer">
-                <img class="ec-google-logo" src="img/google-logo.svg" alt="Google" width="74" height="25">
+                <img class="ec-google-logo" src="img/services/google-logo.svg" alt="Google" width="74" height="25">
                 <span class="ec-google-rating__summary" role="img" aria-label="Rated 5.0 out of 5, 130+ reviews">
                     <span class="ec-google-rating__score" aria-hidden="true">5.0</span>
                     <span class="ec-google-rating__stars" aria-hidden="true">
@@ -560,7 +407,7 @@
             </a>
         </div>
         <div class="ec-google-row">
-            <a class="ec-btn ec-btn--primary" href="https://g.co/kgs/brU3Rn9" target="_blank" rel="noopener noreferrer"><img class="ec-google-logo ec-google-logo--btn" src="img/google-logo.svg" alt="" width="59" height="20">Read all reviews</a>
+            <a class="ec-btn ec-btn--primary" href="https://g.co/kgs/brU3Rn9" target="_blank" rel="noopener noreferrer"><img class="ec-google-logo ec-google-logo--btn" src="img/services/google-logo.svg" alt="" width="59" height="20">Read all reviews</a>
             <a class="ec-btn ec-btn--ghost" href="https://g.page/r/CRp1fzZnCA4yEBM/review" target="_blank" rel="noopener noreferrer">Write a review</a>
         </div>
         <div class="ec-review-marquee" aria-label="Patient reviews scrolling">
@@ -669,6 +516,7 @@
             <a href="index.html">Home</a>
             <a href="dentist-in-baner.html">Dentist in Baner</a>
             <a href="https://maps.app.goo.gl/xwzzvwhkLiujg52z9" target="_blank" rel="noopener noreferrer">Locate us</a>
+            <a href="online-consultation.html">Online consultation</a>
             <a href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" target="_blank" rel="noopener noreferrer">Book appointment</a>
             <a href="https://g.co/kgs/brU3Rn9" target="_blank" rel="noopener noreferrer">Google reviews</a>
             <a href="tel:+917666297468">Call us</a>
@@ -677,18 +525,19 @@
             <h3>Explore</h3>
             <a href="about.html">About</a>
             <a href="service.html">Services</a>
-            <a href="our-work.html">Our work</a>
+            <a href="our-work.html">Our Work</a>
             <a href="contact.html">Contact</a>
+            <a href="online-consultation.html">Online consult</a>
             <a href="faq.html">FAQ</a>
             <a href="blogs.html">Blogs</a>
             <a href="offer.html">Offers</a>
         </div>
         <div>
             <h3>Services</h3>
-            <a href="https://blog.enamelcraft.in/root-canal-therapy-baner-wakad-aundh-pune/" target="_blank" rel="noopener noreferrer">Root canal therapy</a>
-            <a href="https://blog.enamelcraft.in/dental-implants/" target="_blank" rel="noopener noreferrer">Dental implants</a>
-            <a href="https://blog.enamelcraft.in/cosmetic-dentistry-baner" target="_blank" rel="noopener noreferrer">Cosmetic dentistry</a>
-            <a href="https://blog.enamelcraft.in/dental-cleanings-baner-wakad-aundh-pune-pancard-club-road/" target="_blank" rel="noopener noreferrer">Cleanings</a>
+            <a href="service.html#svc-root-canal">Root canal therapy</a>
+            <a href="service.html#svc-implants">Dental implants</a>
+            <a href="service.html#svc-whitening">Cosmetic dentistry</a>
+            <a href="service.html#svc-scaling">Cleanings</a>
         </div>
         <div itemscope itemtype="https://schema.org/Dentist">
             <h3>Studio</h3>
@@ -698,10 +547,10 @@
             <a href="mailto:enamelcraft.dental@gmail.com" itemprop="email">enamelcraft.dental@gmail.com</a>
             <a href="tel:+917666297468" itemprop="telephone">+91-7666297468</a>
             <div class="ec-footer__social">
-                <a href="https://api.whatsapp.com/send?phone=917666297468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.youtube.com/@EnamelCraft/shorts" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/enamel.craft/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=917666297468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.youtube.com/@EnamelCraft/shorts" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.instagram.com/enamel.craft/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -711,14 +560,14 @@
 </footer>
 
 <div class="ec-mobile-cta" aria-label="Quick contact">
-    <a href="tel:+917666297468" class="ec-mobile-cta__call"><i class="fa fa-phone-alt" aria-hidden="true"></i> Call</a>
-    <a href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" class="ec-mobile-cta__wa" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Book</a>
+    <a href="tel:+917666297468" class="ec-mobile-cta__call"><i class="bi bi-telephone" aria-hidden="true"></i> Call</a>
+    <a href="https://wa.me/917666297468?text=Hello,%20Can%20I%20book%20an%20appointment%3F" class="ec-mobile-cta__wa" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp" aria-hidden="true"></i> Book visit</a>
 </div>
 
 <div id="clinic-tour-lightbox" class="clinic-tour-lightbox" role="dialog" aria-modal="true" aria-labelledby="clinic-tour-lightbox-title" hidden>
     <div class="clinic-tour-lightbox__backdrop" tabindex="-1"></div>
     <div class="clinic-tour-lightbox__dialog">
-        <button type="button" id="clinic-tour-lightbox-close" class="clinic-tour-lightbox__close" aria-label="Close gallery"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" id="clinic-tour-lightbox-close" class="clinic-tour-lightbox__close" aria-label="Close gallery"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
         <h2 id="clinic-tour-lightbox-title" class="visually-hidden">Clinic tour photo</h2>
         <div class="clinic-tour-lightbox__img-wrap">
             <img id="clinic-tour-lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" class="clinic-tour-lightbox__img" width="1200" height="900">
@@ -733,6 +582,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/ec-images.js" defer></script>
 <script src="js/google-reviews.js" defer></script>
 <script src="js/site.js" defer></script>
 </body>
