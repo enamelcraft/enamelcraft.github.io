@@ -20,6 +20,10 @@
   --ec-font-num: "Inter", "DM Sans", system-ui, sans-serif;
   --ec-header-h: 4.5rem;
   --ec-max: 72rem;
+  --ec-nav-link-size: 0.875rem;
+  --ec-nav-link-weight: 500;
+  --ec-nav-link-pad-y: 0.5rem;
+  --ec-nav-link-pad-x: 0.55rem;
 }
 
 *,
@@ -68,7 +72,6 @@ html {
 /* Readable numerals — phones, hours, ratings, stats (sans, not serif) */
 .ec-num,
 .ec-utility__meta-value,
-.ec-strip__card h3,
 .ec-strip__card p,
 .ec-book-cta__phone,
 .ec-book-cta__trust,
@@ -355,16 +358,17 @@ html {
 }
 
 .ec-nav__links a {
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-family: var(--ec-font-sans);
+  font-size: var(--ec-nav-link-size);
+  font-weight: var(--ec-nav-link-weight);
   color: var(--ec-muted);
   text-decoration: none;
-  padding: 0.65rem 0.85rem;
+  padding: var(--ec-nav-link-pad-y) var(--ec-nav-link-pad-x);
   border-radius: 10px;
   transition: background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -381,21 +385,26 @@ html {
   }
 
   .ec-nav__links a {
-    padding: 0.45rem 0.5rem;
-    font-size: 0.8125rem;
-  }
-
-  .ec-nav__cta {
-    font-size: 0.8125rem;
-    padding: 0.55rem 0.9rem;
-    white-space: nowrap;
+    padding: 0.4rem 0.42rem;
   }
 }
 
 @media (min-width: 1200px) {
   .ec-nav__links a {
-    padding: 0.55rem 0.65rem;
-    font-size: 0.875rem;
+    padding: var(--ec-nav-link-pad-y) 0.65rem;
+  }
+}
+
+.ec-header .ec-nav__actions .ec-btn {
+  font-size: var(--ec-nav-link-size);
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .ec-header .ec-nav__actions .ec-btn {
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
   }
 }
 
@@ -415,9 +424,9 @@ html {
 }
 
 .ec-nav__more-toggle {
-  font-family: inherit;
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-family: var(--ec-font-sans);
+  font-size: var(--ec-nav-link-size);
+  font-weight: var(--ec-nav-link-weight);
   color: var(--ec-muted);
   background: transparent;
   border: none;
@@ -459,8 +468,9 @@ html {
   display: block;
   padding: 0.55rem 0.75rem;
   border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--ec-font-sans);
+  font-size: var(--ec-nav-link-size);
+  font-weight: var(--ec-nav-link-weight);
   color: var(--ec-muted);
   text-decoration: none;
 }
@@ -517,7 +527,8 @@ html {
 }
 
 .ec-nav__phone {
-  font-size: 0.8125rem;
+  font-family: var(--ec-font-num);
+  font-size: var(--ec-nav-link-size);
   font-weight: 600;
   color: var(--ec-muted);
   text-decoration: none;
@@ -574,12 +585,6 @@ html {
   margin-bottom: 0.85rem;
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .ec-nav__cta-secondary {
-    font-size: 0.8125rem;
-    padding: 0.55rem 0.75rem;
-  }
-}
 
 .ec-btn {
   display: inline-flex;
@@ -676,8 +681,58 @@ html {
 .ec-hero__slides {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 
+/* Frame holds opacity crossfade; inner img gets Ken Burns (transform on img breaks object-fit cover) */
+.ec-hero__frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 2.2s ease-in-out;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ec-hero__frame.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.ec-hero__frame__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.06);
+  transform-origin: center center;
+  animation: none;
+  filter: saturate(0.92) contrast(1.04) brightness(0.94);
+}
+
+.ec-hero__frame.is-active .ec-hero__frame__img {
+  animation: ec-hero-ken 28s ease-in-out infinite alternate;
+}
+
+/* Ceiling TV — wide desktop heroes crop top/bottom with centered object-position */
+.ec-hero__frame--top .ec-hero__frame__img {
+  object-position: 50% 0%;
+  transform-origin: 50% 0%;
+}
+
+.ec-hero__frame--top.is-active .ec-hero__frame__img {
+  animation: ec-hero-ken-top 28s ease-in-out infinite alternate;
+}
+
+@media (min-width: 768px) {
+  .ec-hero__frame--top .ec-hero__frame__img {
+    object-position: 50% 0%;
+  }
+}
+
+/* Legacy single-img markup (if any page still uses it) */
 .ec-hero__slide {
   position: absolute;
   inset: 0;
@@ -688,46 +743,21 @@ html {
   opacity: 0;
   transition: opacity 2.2s ease-in-out;
   z-index: 0;
-  transform: scale(1.04);
-  animation: none;
-  filter: saturate(0.9) contrast(1.04) brightness(0.96);
 }
 
 .ec-hero__slide.is-active {
   opacity: 1;
   z-index: 1;
-  animation: ec-hero-ken 28s ease-in-out infinite alternate;
-}
-
-/* Ceiling TV / logo near top — keep top visible on wide & TV viewports */
-.ec-hero__slide--focus-top {
-  object-position: 50% 0%;
-  transform-origin: 50% 0%;
-}
-
-.ec-hero__slide--focus-top.is-active {
-  animation: ec-hero-ken-top 28s ease-in-out infinite alternate;
-}
-
-@media (min-aspect-ratio: 16 / 10) {
-  .ec-hero__slide--focus-top {
-    object-position: 50% 2%;
-  }
-}
-
-@media (min-width: 1600px) {
-  .ec-hero__slide--focus-top {
-    object-position: 50% 0%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ec-hero__slide.is-active {
+  .ec-hero__frame.is-active .ec-hero__frame__img {
     animation: none;
+    transform: scale(1.02);
   }
 
-  .ec-hero__slide--focus-top.is-active {
-    animation: none;
+  .ec-hero__frame--top.is-active .ec-hero__frame__img {
+    transform-origin: 50% 0%;
   }
 }
 
@@ -736,16 +766,16 @@ html {
     transform: scale(1.04);
   }
   to {
-    transform: scale(1.1);
+    transform: scale(1.09);
   }
 }
 
 @keyframes ec-hero-ken-top {
   from {
-    transform: scale(1.01);
+    transform: scale(1.03);
   }
   to {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
 }
 
@@ -754,11 +784,25 @@ html {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(247, 246, 243, 0.15) 0%,
-    rgba(26, 31, 28, 0.55) 55%,
-    rgba(26, 31, 28, 0.72) 100%
+    rgba(26, 31, 28, 0.32) 0%,
+    rgba(26, 31, 28, 0.48) 42%,
+    rgba(26, 31, 28, 0.78) 68%,
+    rgba(26, 31, 28, 0.92) 100%
   );
   z-index: 1;
+  pointer-events: none;
+}
+
+.ec-hero__overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(26, 31, 28, 0.62) 0%,
+    rgba(26, 31, 28, 0.28) 42%,
+    transparent 72%
+  );
 }
 
 .ec-hero__content {
@@ -768,6 +812,23 @@ html {
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+}
+
+.ec-hero__content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: max(-1.25rem, calc(-1 * env(safe-area-inset-left, 0px)));
+  right: 8%;
+  top: -0.35rem;
+  bottom: -2.75rem;
+  background: radial-gradient(
+    ellipse 95% 110% at 0% 88%,
+    rgba(26, 31, 28, 0.55) 0%,
+    rgba(26, 31, 28, 0.22) 52%,
+    transparent 78%
+  );
+  pointer-events: none;
 }
 
 .ec-hero__eyebrow {
@@ -781,17 +842,23 @@ html {
 
 .ec-hero h1 {
   color: #fff;
-  max-width: min(26ch, 100%);
+  max-width: min(38ch, 100%);
   margin: 0 0 1rem;
-  font-size: clamp(2.1rem, 5.5vw, 3.5rem);
-  line-height: 1.08;
+  font-size: clamp(2.05rem, 5vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.12;
+  text-wrap: balance;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.48), 0 1px 3px rgba(0, 0, 0, 0.38);
 }
 
 .ec-hero__sub {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.1rem;
-  max-width: 32rem;
+  font-family: var(--ec-font-sans);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.0625rem;
+  max-width: 34rem;
   margin: 0 0 1.75rem;
+  line-height: 1.55;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.42);
 }
 
 .ec-hero__img {
@@ -845,9 +912,10 @@ html {
   padding: 0;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   max-width: 36rem;
   line-height: 1.5;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.38);
 }
 
 .ec-hero__trust-item {
@@ -1000,14 +1068,25 @@ html {
   margin: 0 0 0.35rem;
   font-size: 1.05rem;
   font-weight: 600;
-  font-family: var(--ec-font-serif);
+  font-family: var(--ec-font-sans);
   letter-spacing: -0.01em;
+}
+
+.ec-strip__card h3.ec-num {
+  font-family: var(--ec-font-num);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .ec-strip__card p {
   margin: 0;
   font-size: 0.9rem;
   color: var(--ec-muted);
+}
+
+.ec-strip__visit-address {
+  color: var(--ec-ink);
+  line-height: 1.5;
 }
 
 .ec-strip--prominent {
@@ -1534,22 +1613,29 @@ html {
   line-height: 1.5;
 }
 
-/* —— Services page: larger treatment tiles —— */
-.ec-services--page {
-  gap: 1.25rem;
+/* —— Services page: linked treatment cards (image + copy) —— */
+.ec-services--page-grid {
+  padding: clamp(0.85rem, 2vw, 1.25rem);
+  border-radius: var(--ec-radius-lg);
+  border: 1px solid var(--ec-line);
+  background: linear-gradient(165deg, var(--ec-surface) 0%, var(--ec-bg) 100%);
 }
 
-@media (min-width: 768px) {
+.ec-services--page {
+  gap: 0.9rem;
+}
+
+@media (min-width: 576px) {
   .ec-services--page {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.35rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 
 @media (min-width: 992px) {
   .ec-services--page {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
   }
 }
 
@@ -1559,7 +1645,27 @@ html {
   padding: 0;
   gap: 0;
   border-radius: var(--ec-radius);
+  background: var(--ec-surface);
+  box-shadow: 0 1px 0 var(--ec-line);
   overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+.ec-services--page .ec-service-detail:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ec-shadow-hover);
+  border-color: rgba(var(--ec-accent-rgb), 0.25);
+}
+
+.ec-services--page .ec-service-detail:focus-visible {
+  outline: 2px solid var(--ec-accent);
+  outline-offset: 2px;
+}
+
+.ec-services--page .ec-service-detail:target {
+  border-color: rgba(var(--ec-accent-rgb), 0.35);
+  box-shadow: 0 0 0 2px var(--ec-accent-soft);
 }
 
 .ec-services--page .ec-service-detail__thumb {
@@ -1568,20 +1674,58 @@ html {
   height: auto;
   aspect-ratio: 16 / 10;
   border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--ec-line);
+  background: var(--ec-accent-soft);
+}
+
+.ec-services--page .ec-service-detail__thumb img {
+  transition: transform 0.35s ease;
+}
+
+.ec-services--page .ec-service-detail:hover .ec-service-detail__thumb img {
+  transform: scale(1.04);
 }
 
 .ec-services--page .ec-service-detail__body {
-  padding: 1.1rem 1.25rem 1.3rem;
-  gap: 0.45rem;
+  padding: 0.9rem 1rem 1.05rem;
+  gap: 0.35rem;
+  flex: 1;
 }
 
 .ec-services--page .ec-service-detail__title {
-  font-size: 1.0625rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: var(--ec-font-sans);
 }
 
 .ec-services--page .ec-service-detail__desc {
-  font-size: 0.875rem;
-  line-height: 1.55;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ec-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .ec-services--page .ec-service-detail__thumb {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ec-services--page .ec-service-detail__body {
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
+  .ec-services--page .ec-service-detail__title {
+    font-size: 1rem;
+  }
+
+  .ec-services--page .ec-service-detail__desc {
+    font-size: 0.8375rem;
+  }
 }
 
 /* —— Booking CTA (services) —— */
@@ -1689,6 +1833,125 @@ html {
 
 .ec-google-trust {
   gap: 0.65rem 0.75rem;
+}
+
+.ec-book-cta__trust-sep {
+  color: color-mix(in srgb, var(--ec-ink) 35%, transparent);
+  font-weight: 500;
+  user-select: none;
+}
+
+.ec-book-cta__trust-cluster {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+}
+
+/* Visit Health partner strip (home) */
+.ec-partner-strip {
+  border-bottom: 1px solid var(--ec-line);
+  background: var(--ec-surface);
+  box-sizing: border-box;
+  padding-left: max(1.25rem, env(safe-area-inset-left));
+  padding-right: max(1.25rem, env(safe-area-inset-right));
+  overflow-x: clip;
+}
+
+.ec-partner-strip__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  padding-top: clamp(1rem, 3vw, 1.35rem);
+  padding-bottom: clamp(1rem, 3vw, 1.35rem);
+  width: 100%;
+  max-width: var(--ec-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ec-partner-strip__inner--logos {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.ec-partner-logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 40rem;
+}
+
+.ec-partner-logos__item {
+  min-width: 0;
+}
+
+.ec-partner-logos__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--ec-line);
+  border-radius: var(--ec-radius);
+  background: var(--ec-bg);
+  box-sizing: border-box;
+  line-height: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ec-partner-logos__link:hover {
+  border-color: color-mix(in srgb, var(--ec-accent) 22%, var(--ec-line));
+  box-shadow: var(--ec-shadow);
+}
+
+.ec-partner-logos__link:focus-visible {
+  outline: 2px solid var(--ec-accent);
+  outline-offset: 2px;
+}
+
+.ec-partner-logos__img {
+  display: block;
+  width: auto;
+  height: 1.15rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .ec-partner-logos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.6rem;
+    max-width: 52rem;
+  }
+
+  .ec-partner-logos__link {
+    min-height: 3.15rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .ec-partner-logos__img {
+    height: 1.2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ec-book-cta__trust-cluster {
+    width: 100%;
+  }
+
+  .ec-google-trust .ec-google-rating__summary {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
 }
 
 .ec-google-logo--trust {
@@ -1809,12 +2072,12 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: var(--ec-font-sans);
   font-weight: 400;
 }
 
 .ec-google-rating__score {
-  font-family: inherit;
+  font-family: var(--ec-font-num);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -2893,6 +3156,138 @@ html {
   display: block;
   color: var(--ec-muted);
   font-size: 0.925rem;
+}
+
+.ec-consult-pay-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+/* —— Pay page (/pay/) —— */
+.ec-page-pay .ec-pay-section {
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.ec-pay-card {
+  max-width: 26rem;
+  background: var(--ec-surface);
+  border: 1px solid var(--ec-line);
+  border-radius: var(--ec-radius-lg);
+  box-shadow: var(--ec-shadow);
+  padding: clamp(1.35rem, 4vw, 2rem);
+}
+
+.ec-pay-amount-block {
+  margin: 1.5rem 0;
+  padding: 1.15rem 1rem;
+  background: var(--ec-accent-soft);
+  border-radius: var(--ec-radius);
+}
+
+.ec-pay-amount__label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ec-muted);
+  margin-bottom: 0.25rem;
+}
+
+.ec-pay-amount {
+  font-family: var(--ec-font-serif);
+  font-size: clamp(2.25rem, 8vw, 2.75rem);
+  font-weight: 600;
+  color: var(--ec-accent);
+  line-height: 1.1;
+}
+
+.ec-pay-qr-frame {
+  margin: 0;
+  padding: 0.85rem;
+  background: #fff;
+  border: 1px solid var(--ec-line);
+  border-radius: var(--ec-radius);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.ec-pay-qr-frame img {
+  display: block;
+  width: 100%;
+  max-width: 17.5rem;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.ec-pay-qr__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ec-ink);
+}
+
+.ec-pay-upi-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.85rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--ec-muted);
+}
+
+.ec-pay-upi-badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ec-pay-qr-download-wrap {
+  margin-top: 1.15rem;
+}
+
+.ec-pay-instructions {
+  margin: 1.35rem 0;
+  padding-left: 1.15rem;
+  color: var(--ec-muted);
+  font-size: 0.925rem;
+}
+
+.ec-pay-instructions li + li {
+  margin-top: 0.5rem;
+}
+
+.ec-pay-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.ec-pay-or {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ec-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ec-pay-or::before,
+.ec-pay-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ec-line);
+}
+
+.ec-pay-trust {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ec-line);
 }
 
 /* —— Our work / cases —— */
@@ -4238,4 +4633,192 @@ html {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
+}
+
+/* —— Mobile: faster paint & touch-friendly layout —— */
+@media (max-width: 767.98px) {
+  .ec-hero__content {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .ec-hero h1 {
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem);
+    line-height: 1.12;
+  }
+
+  .ec-hero__sub {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .ec-hero__actions .ec-btn {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .ec-nav__toggle {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .ec-nav__links a,
+  .ec-nav__actions .ec-btn {
+    min-height: 2.75rem;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .ec-book-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ec-book-cta__actions .ec-btn,
+  .ec-book-cta__phone {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .ec-book-cta__phone {
+    font-size: 1.15rem;
+  }
+
+  .ec-map-frame {
+    min-height: 220px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .ec-map-frame iframe {
+    min-height: 220px;
+  }
+
+  .ec-section[data-ec-reveal] {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 520px;
+  }
+
+  .ec-review-marquee__track {
+    animation-duration: 90s;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .ec-hero__trust {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    gap: 0.3rem 0.4rem;
+  }
+
+  .ec-strip {
+    margin-top: -2rem;
+  }
+
+  .ec-services--flagship .ec-service-detail {
+    padding: 0.85rem 0.9rem;
+  }
+}
+
+img.ec-google-logo,
+.ec-media-frame img,
+.clinic-marquee__slide img,
+.ec-case-teaser__visual img,
+.ec-gallery-grid__item img {
+  max-width: 100%;
+}
+
+/* Home — clinic video reels (index only) */
+.ec-home-videos {
+  position: relative;
+}
+
+.ec-home-videos__grid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+@media (min-width: 768px) {
+  .ec-home-videos__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  .ec-home-videos__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ec-home-video-card__player {
+    max-width: 100%;
+  }
+}
+
+.ec-home-video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+  background: var(--ec-surface);
+  border: 1px solid var(--ec-line);
+  border-radius: var(--ec-radius-lg);
+  box-shadow: var(--ec-shadow);
+}
+
+.ec-home-video-card__player {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
+  border-radius: var(--ec-radius);
+  overflow: hidden;
+  background: #0e1210;
+  box-shadow: 0 8px 32px rgba(26, 31, 28, 0.12);
+}
+
+.ec-home-video-card__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  vertical-align: middle;
+  background: #0e1210;
+}
+
+.ec-home-video-card__body {
+  text-align: center;
+  padding-inline: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .ec-home-video-card__body {
+    text-align: left;
+    padding-inline: 0.35rem;
+  }
+}
+
+.ec-home-video-card__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.45rem);
+  line-height: 1.2;
+}
+
+.ec-home-video-card__meta {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ec-muted);
+  letter-spacing: 0.02em;
+}
+
+.ec-home-video-card__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ec-muted);
 }

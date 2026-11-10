@@ -19,9 +19,9 @@
 
   /** @type {{ src: string, alt: string }[]} */
   var gallery = [
-    { src: GALLERY_DIR + "3.png", alt: "Enamel Craft Dental Studio, Baner — 3" },
-    { src: GALLERY_DIR + "4.png", alt: "Enamel Craft Dental Studio, Baner — 4" },
-    { src: GALLERY_DIR + "5.png", alt: "Enamel Craft Dental Studio, Baner — 5" },
+    { src: GALLERY_DIR + "3.jpg", alt: "Enamel Craft Dental Studio, Baner — 3" },
+    { src: GALLERY_DIR + "4.jpg", alt: "Enamel Craft Dental Studio, Baner — 4" },
+    { src: GALLERY_DIR + "5.jpg", alt: "Enamel Craft Dental Studio, Baner — 5" },
     { src: GALLERY_DIR + "carousel-1.jpg", alt: "Enamel Craft Dental Studio, Baner — carousel 1" },
     { src: GALLERY_DIR + "carousel-2.jpg", alt: "Enamel Craft Dental Studio, Baner — carousel 2" },
     { src: GALLERY_DIR + "consultation1.jpg", alt: "Enamel Craft Dental Studio, Baner — consultation1" },
@@ -44,15 +44,41 @@
     googleLogo: "img/services/google-logo.svg",
     /** Homepage LCP — first slide is in index.html; initHeroSlides appends the rest */
     heroStatic: {
-      src: "img/hero-img/netflixDental.jpg",
-      alt: "Enamel Craft Dental Studio, Baner — clinic interior",
+      src: "img/hero-img/banners/netflixDental.jpg",
+      alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
     },
+  /** Netflix slide stays first (LCP); Dr Girija hero shots rotate after */
     hero: [
-      { src: "img/hero-img/netflixDental.jpg", alt: "Enamel Craft Dental Studio, Baner — netflixDental" },
-      { src: "img/hero-img/3.png", alt: "Enamel Craft Dental Studio, Baner — 3" },
-      { src: "img/hero-img/4.png", alt: "Enamel Craft Dental Studio, Baner — 4" },
-      { src: "img/hero-img/5.png", alt: "Enamel Craft Dental Studio, Baner — 5" },
-      { src: "img/hero-img/consultation1.jpg", alt: "Enamel Craft Dental Studio, Baner — consultation1" },
+      {
+        src: "img/hero-img/banners/netflixDental.jpg",
+        srcset:
+          "img/hero-img/banners/netflixDental-960.jpg 960w, img/hero-img/banners/netflixDental.jpg 1920w",
+        alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
+      },
+      {
+        src: "img/hero-img/banners/dr-g1.jpg",
+        srcset:
+          "img/hero-img/banners/dr-g1-960.jpg 960w, img/hero-img/banners/dr-g1.jpg 1920w",
+        alt: "Dr. Girija Nandanwar Dhakite, dental surgeon at Enamel Craft Dental Studio, Baner",
+      },
+      {
+        src: "img/hero-img/banners/consultation1.jpg",
+        srcset:
+          "img/hero-img/banners/consultation1-960.jpg 960w, img/hero-img/banners/consultation1.jpg 1920w",
+        alt: "Dr. Girija consulting a patient at Enamel Craft Dental Studio, Baner",
+      },
+      {
+        src: "img/hero-img/banners/studio-3.jpg",
+        srcset:
+          "img/hero-img/banners/studio-3-960.jpg 960w, img/hero-img/banners/studio-3.jpg 1920w",
+        alt: "Dr. Girija Nandanwar Dhakite at Enamel Craft Dental Studio, Baner",
+      },
+      {
+        src: "img/hero-img/banners/studio-3-2.jpg",
+        srcset:
+          "img/hero-img/banners/studio-3-2-960.jpg 960w, img/hero-img/banners/studio-3-2.jpg 1920w",
+        alt: "Dr. Girija Nandanwar Dhakite — cosmetic and restorative dentistry in Baner",
+      },
     ],
     gallery: gallery,
     /** Case image files in img/our-work/ — keep in sync with our-work.html article ids */
