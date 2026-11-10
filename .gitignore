@@ -1,1 +1,8 @@
 node_modules/
+.DS_Store
+**/.DS_Store
+
+# Raw phone exports — keep out of git (transcode to videos/*.mp4 for the site)
+img/videos/*.MP4
+img/videos/*reel*
+assets-lib/
