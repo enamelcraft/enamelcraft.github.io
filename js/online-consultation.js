@@ -62,6 +62,10 @@
     return (config.paymentPageUrl || config.paymentLinkUrl || "").trim();
   }
 
+  function getQrPayPageUrl() {
+    return (config.qrPayPageUrl || config.paymentQrPageUrl || "pay.html").trim();
+  }
+
   function isNotifyEnabled() {
     return config.notifyDoctor !== false;
   }
@@ -78,7 +82,7 @@
       "Concern: " + data.concern,
       "Requested at: " + (data.createdAt || new Date().toISOString()),
       "",
-      "Next step: patient pays Rs 299 on Razorpay and shares payment screenshot on WhatsApp.",
+      "Next step: patient pays Rs 299 via Razorpay or UPI QR (enamelcraft.in/pay.html) and shares payment screenshot on WhatsApp.",
     ].join("\n");
   }
 
@@ -107,13 +111,74 @@
     });
   }
 
+  function formSubmitEndpoint(clinicEmail) {
+    /* FormSubmit expects a literal address in the path — encoding @ as %40 breaks AJAX delivery. */
+    return "https://formsubmit.co/ajax/" + clinicEmail.trim();
+  }
+
+  function notifyDoctorViaFormPost(data) {
+    var clinicEmail = (config.clinicEmail || "").trim();
+    if (!clinicEmail) {
+      return Promise.reject(new Error("No clinic email"));
+    }
+
+    return new Promise(function (resolve, reject) {
+      var iframeName = "ec-formsubmit-notify-frame";
+      var iframe = document.getElementById(iframeName);
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = iframeName;
+        iframe.id = iframeName;
+        iframe.title = "FormSubmit";
+        iframe.hidden = true;
+        iframe.style.cssText = "display:none;width:0;height:0;border:0";
+        document.body.appendChild(iframe);
+      }
+
+      var form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://formsubmit.co/" + clinicEmail;
+      form.target = iframeName;
+      form.style.display = "none";
+      form.setAttribute("accept-charset", "UTF-8");
+
+      function field(name, value) {
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value == null ? "" : String(value);
+        form.appendChild(input);
+      }
+
+      field("_subject", "New online consultation request – " + data.name);
+      field("_template", "table");
+      field("_captcha", "false");
+      field("Patient name", data.name);
+      field("Phone", data.phone);
+      field("Patient email", data.email || "Not provided");
+      field("Preferred date", data.preferredDate);
+      field("Preferred time", data.preferredTime);
+      field("Concern", data.concern);
+      field("Requested at", data.createdAt || new Date().toISOString());
+      field("Summary", formatDoctorEmailBody(data));
+
+      document.body.appendChild(form);
+      form.submit();
+
+      window.setTimeout(function () {
+        form.remove();
+        resolve({ ok: true, via: "form-post" });
+      }, 1200);
+    });
+  }
+
   function notifyDoctorViaFormSubmit(data) {
     var clinicEmail = (config.clinicEmail || "").trim();
     if (!clinicEmail) {
       return Promise.reject(new Error("No clinic email"));
     }
 
-    return fetch("https://formsubmit.co/ajax/" + encodeURIComponent(clinicEmail), {
+    return fetch(formSubmitEndpoint(clinicEmail), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -123,20 +188,25 @@
         _subject: "New online consultation request – " + data.name,
         _template: "table",
         _captcha: "false",
-        name: data.name,
-        phone: data.phone,
-        patient_email: data.email || "Not provided",
-        preferred_date: data.preferredDate,
-        preferred_time: data.preferredTime,
-        concern: data.concern,
-        requested_at: data.createdAt || new Date().toISOString(),
-        message: formatDoctorEmailBody(data),
+        "Patient name": data.name,
+        Phone: data.phone,
+        "Patient email": data.email || "Not provided",
+        "Preferred date": data.preferredDate,
+        "Preferred time": data.preferredTime,
+        Concern: data.concern,
+        "Requested at": data.createdAt || new Date().toISOString(),
+        Summary: formatDoctorEmailBody(data),
       }),
     }).then(function (response) {
       if (!response.ok) {
         throw new Error("Email notify failed");
       }
       return response.json();
+    }).then(function (body) {
+      if (body && (body.success === false || body.success === "false")) {
+        throw new Error((body && body.message) || "FormSubmit rejected the request");
+      }
+      return body;
     });
   }
 
@@ -147,7 +217,11 @@
     }
 
     var notifyUrl = (config.notifyUrl || "").trim();
-    var send = notifyUrl ? notifyDoctorViaAppsScript(data) : notifyDoctorViaFormSubmit(data);
+    var send = notifyUrl
+      ? notifyDoctorViaAppsScript(data)
+      : notifyDoctorViaFormSubmit(data).catch(function () {
+          return notifyDoctorViaFormPost(data);
+        });
 
     return send
       .then(function () {
@@ -160,10 +234,28 @@
       });
   }
 
+  function buildWhatsAppSlotRequestMessage(booking) {
+    var number = config.whatsappNumber || "917666297468";
+    var msg = [
+      "Hello, I submitted an online consultation slot request on enamelcraft.in.",
+      "Name: " + booking.name,
+      "Phone: " + booking.phone,
+      booking.email ? "Email: " + booking.email : "",
+      booking.preferredDate ? "Preferred date: " + booking.preferredDate : "",
+      booking.preferredTime ? "Preferred time: " + booking.preferredTime : "",
+      booking.concern ? "Concern: " + booking.concern : "",
+      "I will pay " + (config.amountDisplay || "₹299") + " on Razorpay next and share the payment screenshot here.",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    return "https://wa.me/" + number + "?text=" + encodeURIComponent(msg);
+  }
+
   function buildWhatsAppScreenshotMessage(booking) {
     var number = config.whatsappNumber || "917666297468";
     var msg = [
-      "Hello, I have booked an online consultation slot and paid " + (config.amountDisplay || "₹299") + ".",
+      "Hello, I have paid " + (config.amountDisplay || "₹299") + " for my online consultation.",
       "Name: " + booking.name,
       "Phone: " + booking.phone,
       booking.email ? "Email: " + booking.email : "",
@@ -228,18 +320,28 @@
     var booking = loadBooking();
     var summary = document.getElementById("ec-consult-summary");
     var payBtn = document.getElementById("ec-consult-pay");
+    var payQrBtn = document.getElementById("ec-consult-pay-qr");
     var waBtn = document.getElementById("ec-consult-wa-confirm");
     var notifyStatus = document.getElementById("ec-consult-notify-status");
+    var notifyFailed = document.getElementById("ec-consult-notify-failed");
     var paymentUrl = getPaymentPageUrl();
+    var qrPayUrl = getQrPayPageUrl();
     var status = loadNotifyStatus();
 
     if (notifyStatus && status === "sent") {
       notifyStatus.hidden = false;
+    } else if (notifyFailed && status === "failed") {
+      notifyFailed.hidden = false;
     }
 
     if (payBtn && paymentUrl) {
       payBtn.href = paymentUrl;
       payBtn.hidden = false;
+    }
+
+    if (payQrBtn && qrPayUrl) {
+      payQrBtn.href = qrPayUrl;
+      payQrBtn.hidden = false;
     }
 
     if (booking && summary) {
@@ -258,7 +360,12 @@
     }
 
     if (waBtn && booking) {
-      waBtn.href = buildWhatsAppScreenshotMessage(booking);
+      waBtn.href = buildWhatsAppSlotRequestMessage(booking);
+    }
+
+    var waPayBtn = document.getElementById("ec-consult-wa-payment");
+    if (waPayBtn && booking) {
+      waPayBtn.href = buildWhatsAppScreenshotMessage(booking);
     }
   }
 

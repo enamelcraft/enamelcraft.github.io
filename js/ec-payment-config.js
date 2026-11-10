@@ -3,6 +3,9 @@
  */
 window.EC_PAYMENT = {
   paymentPageUrl: "https://pages.razorpay.com/enamelcraft",
+  qrPayPageUrl: "pay.html",
+  qrImagePath: "img/EC-Payment.png",
+  qrDownloadFilename: "enamelcraft-upi-qr.png",
   amountPaise: 29900,
   amountDisplay: "₹299",
   productName: "Online Dental Consultation",
