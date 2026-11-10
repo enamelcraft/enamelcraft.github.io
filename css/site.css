@@ -2418,6 +2418,32 @@ html {
   padding: 0;
 }
 
+.ec-footer__legal a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ec-legal-doc {
+  max-width: 42rem;
+}
+
+.ec-legal-doc h2 {
+  font-family: var(--ec-font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 1.65rem 0 0.55rem;
+  color: var(--ec-ink);
+}
+
+.ec-legal-doc ul {
+  padding-left: 1.15rem;
+  margin-bottom: 0.85rem;
+}
+
+.ec-legal-doc li + li {
+  margin-top: 0.35rem;
+}
+
 /* —— Mobile CTA —— */
 .ec-mobile-cta {
   display: none;
