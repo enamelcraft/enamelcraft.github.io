@@ -10,14 +10,12 @@
   "telephone": "+91-7666297468",
   "email": "enamelcraft.dental@gmail.com",
   "priceRange": "₹₹",
-  "currenciesAccepted": "INR",
-  "paymentAccepted": "Cash, Credit Card, Debit Card, UPI",
   "hasMap": "https://maps.google.com/?cid=0x320e0867367f751a",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Shop No. 3, Shreeban building, Sneh Park Society, Pancard Club Rd, Baner Gaon, Baner",
+    "streetAddress": "Shop No. 3, Shreeban building, Sneh Park Society, Pancard Club Rd, Baner Gaon, Baner, Pune, Maharashtra 411045",
     "addressLocality": "Baner",
-    "addressRegion": "Maharashtra",
+    "addressRegion": "MH",
     "postalCode": "411045",
     "addressCountry": "IN"
   },
@@ -50,19 +48,15 @@
   "areaServed": [
     { "@type": "City", "name": "Pune" },
     { "@type": "Place", "name": "Baner" },
-    { "@type": "Place", "name": "Pancard Club Road" },
-    { "@type": "Place", "name": "Aundh" },
-    { "@type": "Place", "name": "Balewadi" }
+    { "@type": "Place", "name": "Pancard Club Road" }
   ],
-  "knowsAbout": [
-    "Cosmetic Dentistry",
-    "Root Canal Treatment",
-    "Dental Implants",
-    "Teeth Whitening",
-    "Orthodontics",
-    "Pediatric Dentistry",
-    "Emergency Dental Care"
-  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": 130
+  },
   "sameAs": [
     "https://www.google.com/maps/place/Enamel+Craft+Dental+Studio/@18.5600556,73.779991,17z/data=!3m1!4b1!4m6!3m5!1s0xb12fc82cc6986e7:0x320e0867367f751a!8m2!3d18.5600556!4d73.7825659!16s%2Fg%2F11lnvm22t6",
     "https://www.facebook.com/people/Enamel-Craft-Dental-Studio/61569511804910/",
