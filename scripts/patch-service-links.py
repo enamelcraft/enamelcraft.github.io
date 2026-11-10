@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Point treatment links to on-site service.html anchors."""
+"""Point treatment links: service.html grid uses blog.enamelcraft.in (see live site); other pages may use # anchors."""
 from __future__ import annotations
 
 import re
@@ -49,9 +49,10 @@ def fix_service_card(block: str) -> str:
     sid = TITLE_TO_ID.get(m.group(1).strip())
     if not sid:
         return block
+    href = f'service.html#{sid}'
     block = re.sub(
         r'<a class="ec-service-detail"[^>]*>',
-        f'<a class="ec-service-detail" id="{sid}" href="service.html#{sid}">',
+        f'<a class="ec-service-detail" id="{sid}" href="{href}">',
         block,
         count=1,
     )
@@ -75,6 +76,8 @@ def patch_file(path: Path) -> None:
 
 def main() -> None:
     for p in sorted(ROOT.glob("*.html")):
+        if p.name == "service.html":
+            continue
         patch_file(p)
         print(p.name)
 

@@ -27,6 +27,10 @@ function dentistSchemaBlock(pageUrl) {
   return `    <script type="application/ld+json">\n${JSON.stringify(data, null, 4)}\n    </script>`;
 }
 
+const servicePages = JSON.parse(
+  fs.readFileSync(path.join(root, "seo", "service-pages.json"), "utf8")
+);
+
 const pageUrls = {
   "index.html": "https://www.enamelcraft.in/",
   "about.html": "https://www.enamelcraft.in/about.html",
@@ -34,12 +38,16 @@ const pageUrls = {
   "contact.html": "https://www.enamelcraft.in/contact.html",
   "faq.html": "https://www.enamelcraft.in/faq.html",
   "blogs.html": "https://www.enamelcraft.in/blogs.html",
-  "offer.html": "https://www.enamelcraft.in/offer.html",
   "yashwin.html": "https://www.enamelcraft.in/yashwin.html",
   "voice-search.html": "https://www.enamelcraft.in/voice-search.html",
-  "dentist-in-baner.html": "https://www.enamelcraft.in/dentist-in-baner.html",
   "our-work.html": "https://www.enamelcraft.in/our-work.html",
+  "dentist-in-baner.html": "https://www.enamelcraft.in/dentist-in-baner.html",
+  "online-consultation.html": "https://www.enamelcraft.in/online-consultation.html",
 };
+
+for (const p of servicePages) {
+  pageUrls[`${p.slug}.html`] = `https://www.enamelcraft.in/${p.slug}.html`;
+}
 
 const publicPages = Object.keys(pageUrls);
 
@@ -78,7 +86,7 @@ function replaceHeadDentistSchema(html, pageUrl) {
 }
 
 function injectLocalMeta(html) {
-  if (html.includes('name="geo.region"')) return html;
+  if (html.includes('name="geo.region"') || html.includes('property="og:site_name"')) return html;
   return html.replace(
     /<meta name="viewport"[^>]*>/,
     (m) => `${m}\n${LOCAL_META}`

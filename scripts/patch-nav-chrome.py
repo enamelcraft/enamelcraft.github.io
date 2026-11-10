@@ -16,8 +16,6 @@ ACTIVE_BY_FILE = {
     "blogs.html": "home",
     "online-consultation.html": "home",
     "faq.html": "home",
-    "dentist-in-baner.html": "home",
-    "offer.html": "home",
     "voice-search.html": "home",
     "yashwin.html": "home",
     "online-consultation-thank-you.html": "home",
