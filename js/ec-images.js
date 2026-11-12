@@ -1,23 +1,12 @@
 /**
  * Central image map for Enamel Craft site sections.
  * Edit these lists to add/remove photos — paths are relative to site root.
- *
- * Folders:
- *   img/hero-img/   — homepage hero carousel only
- *   img/gallery/    — “Inside the studio” marquee + lightbox
- *   img/our-work/   — case study photos (filename referenced in our-work.html)
- *   img/services/   — service thumbnails
- *   img/dr-girija/  — doctor portraits
- *   img/blogs/      — blog card images
- *   img/reviews/    — Google review avatars
- *   img/logo-img/   — logos & favicon
  */
 (function (global) {
   "use strict";
 
   var GALLERY_DIR = "img/gallery/";
 
-  /** @type {{ src: string, alt: string }[]} */
   var gallery = [
     { src: GALLERY_DIR + "3.jpg", alt: "Enamel Craft Dental Studio, Baner — 3" },
     { src: GALLERY_DIR + "4.jpg", alt: "Enamel Craft Dental Studio, Baner — 4" },
@@ -38,50 +27,58 @@
     { src: GALLERY_DIR + "netflixDental.jpg", alt: "Enamel Craft Dental Studio, Baner — netflixDental" },
   ];
 
+  var desktopHero = [
+    {
+      src: "img/hero-img/desktop/netflixDental.jpg",
+      alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
+    },
+    {
+      src: "img/hero-img/desktop/consultation1.jpg",
+      alt: "Dr. Girija consulting a patient at Enamel Craft Dental Studio, Baner",
+    },
+    {
+      src: "img/hero-img/desktop/studio-3.jpg",
+      alt: "Dr. Girija Nandanwar Dhakite at Enamel Craft Dental Studio, Baner",
+    },
+    {
+      src: "img/hero-img/desktop/studio-3-2.jpg",
+      alt: "Dr. Girija Nandanwar Dhakite — cosmetic and restorative dentistry in Baner",
+    },
+    {
+      src: "img/hero-img/desktop/dr-girija-hero.png",
+      alt: "Dr. Girija Nandanwar Dhakite — Lead Dentist at Enamel Craft Dental Studio, Baner",
+    },
+  ];
+
+  var mobileHero = [
+    {
+      src: "img/hero-img/mobile/netflixDental-960.jpg",
+      alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
+    },
+    {
+      src: "img/hero-img/mobile/consultation1-960.jpg",
+      alt: "Dr. Girija consulting a patient at Enamel Craft Dental Studio, Baner",
+    },
+    {
+      src: "img/hero-img/mobile/studio-3-960.jpg",
+      alt: "Dr. Girija Nandanwar Dhakite at Enamel Craft Dental Studio, Baner",
+    },
+    {
+      src: "img/hero-img/mobile/dr-g1.jpg",
+      alt: "Dr. Girija Nandanwar Dhakite — Lead Dentist at Enamel Craft Dental Studio, Baner",
+    },
+  ];
+
+  var isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767.98px)").matches;
+  var selectedHero = isMobile ? mobileHero : desktopHero;
+
   global.EC_IMAGES = {
     logo: "img/logo-img/enamel-craft-dental-studio-logo.png",
     favicon: "img/logo-img/logo.png",
     googleLogo: "img/services/google-logo.svg",
-    /** Homepage LCP — first slide is in index.html; initHeroSlides appends the rest */
-    heroStatic: {
-      src: "img/hero-img/banners/netflixDental.jpg",
-      alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
-    },
-  /** Netflix slide stays first (LCP); Dr Girija hero shots rotate after */
-    hero: [
-      {
-        src: "img/hero-img/banners/netflixDental.jpg",
-        srcset:
-          "img/hero-img/banners/netflixDental-960.jpg 960w, img/hero-img/banners/netflixDental.jpg 1920w",
-        alt: "Enamel Craft Dental Studio, Baner — clinic interior with ceiling-mounted display",
-      },
-      {
-        src: "img/hero-img/banners/dr-g1.jpg",
-        srcset:
-          "img/hero-img/banners/dr-g1-960.jpg 960w, img/hero-img/banners/dr-g1.jpg 1920w",
-        alt: "Dr. Girija Nandanwar Dhakite, dental surgeon at Enamel Craft Dental Studio, Baner",
-      },
-      {
-        src: "img/hero-img/banners/consultation1.jpg",
-        srcset:
-          "img/hero-img/banners/consultation1-960.jpg 960w, img/hero-img/banners/consultation1.jpg 1920w",
-        alt: "Dr. Girija consulting a patient at Enamel Craft Dental Studio, Baner",
-      },
-      {
-        src: "img/hero-img/banners/studio-3.jpg",
-        srcset:
-          "img/hero-img/banners/studio-3-960.jpg 960w, img/hero-img/banners/studio-3.jpg 1920w",
-        alt: "Dr. Girija Nandanwar Dhakite at Enamel Craft Dental Studio, Baner",
-      },
-      {
-        src: "img/hero-img/banners/studio-3-2.jpg",
-        srcset:
-          "img/hero-img/banners/studio-3-2-960.jpg 960w, img/hero-img/banners/studio-3-2.jpg 1920w",
-        alt: "Dr. Girija Nandanwar Dhakite — cosmetic and restorative dentistry in Baner",
-      },
-    ],
+    heroStatic: selectedHero[0],
+    hero: selectedHero,
     gallery: gallery,
-    /** Case image files in img/our-work/ — keep in sync with our-work.html article ids */
     ourWorkCases: [
       { id: "case-wisdom-operculum", file: "case-wisdom-operculectomy.jpeg" },
       { id: "case-rct-lower-molar", file: "case-rct-lower-molar.jpeg" },
